@@ -5,10 +5,11 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f8f9fa;
+    color: #1a1a1a;
+    background: #fafafa;
+    min-height: 100vh;
 }
 
 .app-container {
@@ -19,15 +20,15 @@ body {
 /* Sidebar Styles */
 .sidebar {
     width: 320px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 40px 30px;
+    background: white;
+    color: #1a1a1a;
+    padding: 60px 40px;
     display: flex;
     flex-direction: column;
     position: fixed;
     height: 100vh;
     overflow-y: auto;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    border-right: 1px solid #e5e5e5;
 }
 
 .profile-section {
@@ -40,29 +41,37 @@ body {
 }
 
 .profile-img {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
-    border: 4px solid rgba(255,255,255,0.3);
     object-fit: cover;
+    transition: all 0.3s ease;
+    border: 3px solid #f0f0f0;
+}
+
+.profile-img:hover {
+    transform: scale(1.02);
+    border-color: #e0e0e0;
 }
 
 .name {
-    font-size: 1.8rem;
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: 700;
     margin-bottom: 8px;
+    color: #1a1a1a;
 }
 
 .title {
-    font-size: 1.1rem;
-    opacity: 0.9;
+    font-size: 1rem;
+    color: #666;
     margin-bottom: 12px;
+    font-weight: 400;
 }
 
 .location {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    margin-bottom: 20px;
+    font-size: 0.875rem;
+    color: #888;
+    margin-bottom: 32px;
 }
 
 .social-links {
@@ -75,19 +84,95 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: rgba(255,255,255,0.2);
-    color: white;
+    width: 44px;
+    height: 44px;
+    background: #f8f9fa;
+    color: #666;
     text-decoration: none;
     border-radius: 50%;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     font-size: 1.2rem;
+    border: 1px solid #e9ecef;
 }
 
 .social-link:hover {
-    background: rgba(255,255,255,0.3);
-    transform: translateY(-2px);
+    background: #1a1a1a;
+    color: white;
+    transform: translateY(-1px);
+    border-color: #1a1a1a;
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* 微信弹窗样式 */
+.wechat-container {
+    position: relative;
+    display: inline-block;
+}
+
+.wechat-popup {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 1000;
+    margin-bottom: 12px;
+    border: 1px solid #f0f0f0;
+    min-width: 160px;
+}
+
+.wechat-popup::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: white;
+}
+
+.wechat-container:hover .wechat-popup {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-10px);
+}
+
+.wechat-popup-content {
+    text-align: center;
+}
+
+.wechat-qrcode {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.wechat-info {
+    color: #1a1a1a;
+}
+
+.wechat-id {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    color: #1a1a1a;
+}
+
+.wechat-tip {
+    font-size: 11px;
+    color: #666;
+    margin: 0;
 }
 
 .nav-section {
@@ -104,30 +189,45 @@ body {
 
 .nav-link {
     display: block;
-    color: rgba(255,255,255,0.8);
+    color: #666;
     text-decoration: none;
-    padding: 12px 16px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    padding: 16px 0;
+    border-radius: 0;
+    transition: all 0.2s ease;
     font-weight: 500;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
 }
 
 .nav-link:hover {
-    background: rgba(255,255,255,0.1);
-    color: white;
+    color: #1a1a1a;
 }
 
 .nav-link.active {
-    background: rgba(255,255,255,0.2);
-    color: white;
+    color: #1a1a1a;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 24px;
+    background: #1a1a1a;
+    border-radius: 2px;
 }
 
 /* Main Content Styles */
 .main-content {
     margin-left: 320px;
     flex: 1;
-    padding: 40px;
+    padding: 80px;
     overflow-y: auto;
+    background: #fafafa;
 }
 
 .content-section {
@@ -146,22 +246,27 @@ body {
 }
 
 .section-header h2 {
-    font-size: 2.5rem;
-    color: #2c3e50;
-    margin-bottom: 10px;
+    font-size: 3rem;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 .section-header p {
     color: #666;
-    font-size: 1.1rem;
+    font-size: 1.125rem;
+    font-weight: 400;
 }
 
 /* About Section */
 .about-content {
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1.125rem;
     line-height: 1.8;
     color: #555;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .about-content p {
@@ -176,9 +281,13 @@ body {
 }
 
 .skill-category h3 {
-    color: #2c3e50;
-    margin-bottom: 15px;
-    font-size: 1.3rem;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.875rem;
 }
 
 .skill-tags {
@@ -188,18 +297,21 @@ body {
 }
 
 .skill-tag {
-    background: #667eea;
-    color: white;
+    background: #f8f9fa;
+    color: #666;
     padding: 8px 16px;
     border-radius: 20px;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    border: 1px solid #e9ecef;
 }
 
 .skill-tag:hover {
-    background: #5a6fd8;
-    transform: translateY(-2px);
+    background: #1a1a1a;
+    color: white;
+    transform: translateY(-1px);
+    border-color: #1a1a1a;
 }
 
 /* Projects Section */
@@ -213,13 +325,14 @@ body {
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
 
 .project-image img {
@@ -233,15 +346,17 @@ body {
 }
 
 .project-info h3 {
-    color: #2c3e50;
-    margin-bottom: 15px;
-    font-size: 1.3rem;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
 .project-info p {
     color: #666;
     margin-bottom: 20px;
     line-height: 1.6;
+    font-size: 0.95rem;
 }
 
 .project-tech {
@@ -252,12 +367,13 @@ body {
 }
 
 .project-tech span {
-    background: #f1f3f4;
-    color: #5f6368;
+    background: #f8f9fa;
+    color: #666;
     padding: 4px 12px;
     border-radius: 12px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 500;
+    border: 1px solid #e9ecef;
 }
 
 .project-links {
@@ -267,19 +383,19 @@ body {
 
 .project-link {
     display: inline-block;
-    background: #667eea;
+    background: #1a1a1a;
     color: white;
     padding: 8px 16px;
     text-decoration: none;
     border-radius: 6px;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .project-link:hover {
-    background: #5a6fd8;
-    transform: translateY(-2px);
+    background: #333;
+    transform: translateY(-1px);
 }
 
 /* Experience Section */
@@ -294,62 +410,71 @@ body {
     left: 15px;
     top: 0;
     bottom: 0;
-    width: 2px;
-    background: #667eea;
+    width: 1px;
+    background: #e5e5e5;
 }
 
 .timeline-item {
     position: relative;
     margin-bottom: 30px;
     background: white;
-    padding: 20px;
+    padding: 24px;
     border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid #f0f0f0;
 }
 
 .timeline-item::before {
     content: '';
     position: absolute;
     left: -23px;
-    top: 20px;
-    width: 12px;
-    height: 12px;
-    background: #667eea;
+    top: 24px;
+    width: 8px;
+    height: 8px;
+    background: #1a1a1a;
     border-radius: 50%;
-    border: 3px solid #f8f9fa;
+    border: 2px solid #fafafa;
 }
 
 .timeline-date {
-    color: #667eea;
+    color: #666;
     font-weight: 600;
     margin-bottom: 8px;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .timeline-content h3 {
-    color: #2c3e50;
-    margin-bottom: 5px;
-    font-size: 1.2rem;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    font-size: 1.125rem;
+    font-weight: 600;
 }
 
 .company {
-    color: #666;
-    font-style: italic;
-    margin-bottom: 10px;
+    color: #888;
+    font-style: normal;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
 }
 
 .timeline-content p {
-    color: #555;
+    color: #666;
     line-height: 1.6;
+    font-size: 0.95rem;
 }
 
 /* Contact Section */
 .contact-content {
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1.125rem;
     line-height: 1.8;
     color: #555;
     margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .contact-methods {
@@ -361,33 +486,38 @@ body {
 
 .contact-method {
     background: white;
-    padding: 25px;
+    padding: 32px 24px;
     border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     text-align: center;
     transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
 }
 
 .contact-method:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
 }
 
 .contact-method h4 {
-    color: #2c3e50;
-    margin-bottom: 10px;
-    font-size: 1.1rem;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.875rem;
 }
 
 .contact-method a {
-    color: #667eea;
+    color: #1a1a1a;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .contact-method a:hover {
-    color: #5a6fd8;
+    color: #666;
 }
 
 /* Responsive Design */

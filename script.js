@@ -61,6 +61,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // WeChat popup functionality
+    const wechatLink = document.querySelector('.wechat-link');
+    if (wechatLink) {
+        wechatLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            // The popup is handled by CSS hover, but we prevent default link behavior
+        });
+    }
+
     // Add scroll animations
     const observerOptions = {
         threshold: 0.1,
