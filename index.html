@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programmer Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="profile-section">
+                <div class="avatar">
+                    <img src="https://picsum.photos/seed/avatar/150/150.jpg" alt="Profile Picture" class="profile-img">
+                </div>
+                <h1 class="name">Your Name</h1>
+                <p class="title">Full Stack Developer</p>
+                <p class="location">📍 Beijing, China</p>
+                
+                <div class="social-links">
+                    <a href="mailto:your.email@example.com" class="social-link">✉️</a>
+                    <a href="https://github.com/yourusername" class="social-link">🐙</a>
+                    <a href="https://linkedin.com/in/yourusername" class="social-link">💼</a>
+                    <a href="https://twitter.com/yourusername" class="social-link">🐦</a>
+                </div>
+            </div>
+            
+            <nav class="nav-section">
+                <ul class="nav-menu">
+                    <li><a href="#about" class="nav-link active">About</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section id="about" class="content-section active">
+                <div class="section-header">
+                    <h2>About Me</h2>
+                    <p>Get to know me better</p>
+                </div>
+                <div class="about-content">
+                    <p>I'm a passionate full-stack developer with 5+ years of experience in building scalable web applications. I love turning complex problems into simple, beautiful solutions.</p>
+                    <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.</p>
+                </div>
+            </section>
+
+            <section id="skills" class="content-section">
+                <div class="section-header">
+                    <h2>Skills</h2>
+                    <p>Technologies I work with</p>
+                </div>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Frontend</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Vue.js</span>
+                            <span class="skill-tag">TypeScript</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Backend</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Tools & Platforms</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Linux</span>
+                            <span class="skill-tag">CI/CD</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="content-section">
+                <div class="section-header">
+                    <h2>Projects</h2>
+                    <p>My latest work</p>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://picsum.photos/seed/project1/400/200.jpg" alt="Project 1">
+                        </div>
+                        <div class="project-info">
+                            <h3>E-commerce Platform</h3>
+                            <p>A full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment processing, and admin dashboard.</p>
+                            <div class="project-tech">
+                                <span>React</span>
+                                <span>Node.js</span>
+                                <span>MongoDB</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link">Live Demo</a>
+                                <a href="#" class="project-link">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://picsum.photos/seed/project2/400/200.jpg" alt="Project 2">
+                        </div>
+                        <div class="project-info">
+                            <h3>Task Management App</h3>
+                            <p>A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.</p>
+                            <div class="project-tech">
+                                <span>Vue.js</span>
+                                <span>Express</span>
+                                <span>Socket.io</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link">Live Demo</a>
+                                <a href="#" class="project-link">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="https://picsum.photos/seed/project3/400/200.jpg" alt="Project 3">
+                        </div>
+                        <div class="project-info">
+                            <h3>Weather Dashboard</h3>
+                            <p>A responsive weather dashboard with location-based forecasts, interactive maps, and historical weather data visualization.</p>
+                            <div class="project-tech">
+                                <span>JavaScript</span>
+                                <span>API Integration</span>
+                                <span>Chart.js</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="project-link">Live Demo</a>
+                                <a href="#" class="project-link">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="content-section">
+                <div class="section-header">
+                    <h2>Experience</h2>
+                    <p>My professional journey</p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022 - Present</div>
+                        <div class="timeline-content">
+                            <h3>Senior Full Stack Developer</h3>
+                            <p class="company">Tech Company Inc.</p>
+                            <p>Led development of microservices architecture and mentored junior developers.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2020 - 2022</div>
+                        <div class="timeline-content">
+                            <h3>Full Stack Developer</h3>
+                            <p class="company">StartupXYZ</p>
+                            <p>Built scalable web applications and improved system performance by 40%.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2019 - 2020</div>
+                        <div class="timeline-content">
+                            <h3>Junior Developer</h3>
+                            <p class="company">Digital Agency</p>
+                            <p>Developed client websites and learned modern development practices.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="content-section">
+                <div class="section-header">
+                    <h2>Get In Touch</h2>
+                    <p>Let's work together</p>
+                </div>
+                <div class="contact-content">
+                    <p>I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <h4>Email</h4>
+                            <a href="mailto:your.email@example.com">your.email@example.com</a>
+                        </div>
+                        <div class="contact-method">
+                            <h4>GitHub</h4>
+                            <a href="https://github.com/yourusername">github.com/yourusername</a>
+                        </div>
+                        <div class="contact-method">
+                            <h4>LinkedIn</h4>
+                            <a href="https://linkedin.com/in/yourusername">linkedin.com/in/yourusername</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
