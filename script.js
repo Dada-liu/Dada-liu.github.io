@@ -1,6 +1,15 @@
 // 博客文章配置
 const blogPosts = [
     {
+        id: 'new-article',
+        title: 'CSS选择器优先级、层叠、继承',
+        excerpt: '深入理解 CSS 的核心概念：选择器优先级、层叠规则和继承机制。',
+        date: '2024-02-12',
+        tag: '技术',
+        image: 'https://picsum.photos/seed/new-article/600/320.jpg',
+        content: 'blog/new-article/content.md'
+    },
+    {
         id: 'everything-claude-code',
         title: 'Everything Claude Code',
         excerpt: 'Claude Code 完全指南 - 探索 Anthropic 官方 CLI 工具的强大功能。',

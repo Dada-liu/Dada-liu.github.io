@@ -1,8 +1,12 @@
-# Everything Claude Code
+通过智谱免费使用 Claude Code：
 
-<!-- 在这里编写你的文章内容 -->
+https://zhuanlan.zhihu.com/p/1933527867960059761
 
 
+
+Claude Code 官方使用文档：
+
+https://docs.anthropic.com/zh-CN/docs/intro
 
 
 # Claude Code
@@ -103,11 +107,15 @@ claude code 是一个基于大语言模型的对话助手，已经通过微调�
 
    
 
-7. 使用 git worktrees 运行并行 Claude Code 会话 [参考链接](https://docs.claude.com/zh-CN/docs/claude-code/common-workflows#%E4%BD%BF%E7%94%A8-git-worktrees-%E8%BF%90%E8%A1%8C%E5%B9%B6%E8%A1%8C-claude-code-%E4%BC%9A%E8%AF%9D)
+7. 使用 git worktrees 运行并行 Claude Code 会话
 
+   [参考链接](https://docs.claude.com/zh-CN/docs/claude-code/common-workflows#%E4%BD%BF%E7%94%A8-git-worktrees-%E8%BF%90%E8%A1%8C%E5%B9%B6%E8%A1%8C-claude-code-%E4%BC%9A%E8%AF%9D)
 
-8. 将 Claude 用作 unix 风格的使用程序 [参考链接](https://docs.claude.com/zh-CN/docs/claude-code/common-workflows#%E5%B0%86-claude-%E7%94%A8%E4%BD%9C-unix-%E9%A3%8E%E6%A0%BC%E7%9A%84%E5%AE%9E%E7%94%A8%E7%A8%8B%E5%BA%8F)
+   
 
+8. 将 Claude 用作 unix 风格的使用程序
+
+   [参考链接](https://docs.claude.com/zh-CN/docs/claude-code/common-workflows#%E5%B0%86-claude-%E7%94%A8%E4%BD%9C-unix-%E9%A3%8E%E6%A0%BC%E7%9A%84%E5%AE%9E%E7%94%A8%E7%A8%8B%E5%BA%8F)
 
    ```bash
    # 以非交互模式输出
@@ -116,7 +124,9 @@ claude code 是一个基于大语言模型的对话助手，已经通过微调�
 
    
 
-9. 创建自定义斜杆命令 [参考链接](https://docs.claude.com/zh-CN/docs/claude-code/common-workflows#%E5%B0%86-claude-%E7%94%A8%E4%BD%9C-unix-%E9%A3%8E%E6%A0%BC%E7%9A%84%E5%AE%9E%E7%94%A8%E7%A8%8B%E5%BA%8F)
+9. 创建自定义斜杆命令
+
+   [参考链接](https://docs.claude.com/zh-CN/docs/claude-code/common-workflows#%E5%B0%86-claude-%E7%94%A8%E4%BD%9C-unix-%E9%A3%8E%E6%A0%BC%E7%9A%84%E5%AE%9E%E7%94%A8%E7%A8%8B%E5%BA%8F)
 
 
 
@@ -386,7 +396,7 @@ MCP使用基于字符串的版本标识符，其格式为`YYYY-MM-DD`；
 
 
 
-所有层级的 CLAUDE.md 会在启动时自动加载到 Cladue Code 的上下文中；
+所有层级的 CLAUDE.md 会在启动时自动加载到 Claude Code 的上下文中；
 
 
 
@@ -447,3 +457,4 @@ git workflow @docs/git-instructions.md
 [ ] 安全检查过了吗？（千万别泄露敏感信息）
 [ ] 有重复代码吗？（后期维护会哭的）
 [ ] 依赖合理吗？（别引入一堆没用的包
+
