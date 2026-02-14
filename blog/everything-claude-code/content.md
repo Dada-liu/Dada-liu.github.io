@@ -2,8 +2,6 @@
 
 https://zhuanlan.zhihu.com/p/1933527867960059761
 
-
-
 Claude Code 官方使用文档：
 
 https://docs.anthropic.com/zh-CN/docs/intro
@@ -431,7 +429,8 @@ git workflow @docs/git-instructions.md
 
 
 
-### end：使用的最佳实践
+
+### 8、使用的最佳实践
 
 
 
@@ -457,4 +456,10 @@ git workflow @docs/git-instructions.md
 [ ] 安全检查过了吗？（千万别泄露敏感信息）
 [ ] 有重复代码吗？（后期维护会哭的）
 [ ] 依赖合理吗？（别引入一堆没用的包
+
+
+
+### 9、everything-claude-code
+
+[github链接](https://github.com/affaan-m/everything-claude-code?tab=readme-ov-file)
 
