@@ -1,13 +1,13 @@
 // 博客文章配置
 const blogPosts = [
     {
-        id: 'new-article',
+        id: 'css-selector-priority-cascade-inheritance',
         title: 'CSS选择器优先级、层叠、继承',
         excerpt: '深入理解 CSS 的核心概念：选择器优先级、层叠规则和继承机制。',
         date: '2024-02-12',
         tag: '技术',
         image: 'https://picsum.photos/seed/new-article/600/320.jpg',
-        content: 'blog/new-article/content.md'
+        content: 'blog/css-selector-priority-cascade-inheritance/content.md'
     },
     {
         id: 'everything-claude-code',
