@@ -1,6 +1,15 @@
 // 博客文章配置
 const blogPosts = [
     {
+        id: 'react-core',
+        title: 'React 核心：深入理解组件化思想',
+        excerpt: '深入探讨 React 的核心概念：组件、JSX、Props、State、虚拟 DOM 等。',
+        date: '2024-02-17',
+        tag: 'React',
+        image: 'https://picsum.photos/seed/react-core/600/320.jpg',
+        content: 'blog/react-core/content.md'
+    },
+    {
         id: 'css-selector-priority-cascade-inheritance',
         title: 'CSS选择器优先级、层叠、继承',
         excerpt: '深入理解 CSS 的核心概念：选择器优先级、层叠规则和继承机制。',
