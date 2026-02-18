@@ -26,6 +26,15 @@ const blogPosts = [
         tag: 'Claude',
         image: 'https://picsum.photos/seed/claude-code/600/320.jpg',
         content: 'blog/everything-claude-code/content.md'
+    },
+    {
+        id: 'ts-core',
+        title: 'TypeScript 核心：深入理解组件化思想',
+        excerpt: '深入探讨 TypeScript 的核心概念：类型、接口、泛型、枚举等。',
+        date: '2024-02-17',
+        tag: 'TypeScript',
+        image: 'https://picsum.photos/seed/ts-core/600/320.jpg',
+        content: 'blog/ts-core/content.md'
     }
 ];
 
