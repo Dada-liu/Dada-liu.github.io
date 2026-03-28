@@ -114,7 +114,7 @@ function gitPush() {
         execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
 
         // 推送到远程
-        execSync('git push', { stdio: 'inherit' });
+        execSync('git push origin', { stdio: 'inherit' });
 
         console.log(`[${new Date().toLocaleString()}] 已成功提交并推送到远程仓库`);
         return true;
