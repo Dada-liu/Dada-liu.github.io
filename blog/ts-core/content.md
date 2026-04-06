@@ -17,3 +17,5 @@ TS 是一个有用的内容；
 枚举（Enums）为一组数值赋予更友好的名字。
 命名空间（Namespaces）用于组织代码，避免命名冲突。
 枚举（Enums）为一组数值赋予更友好的名字。
+只读属性（Readonly Properties）确保某些属性只能在创建时被赋值。
+工具类型（Utility Types）是TypeScript内置的一些常用类型转换工具。
