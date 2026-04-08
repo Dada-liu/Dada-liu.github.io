@@ -19,3 +19,6 @@ TS 是一个有用的内容；
 枚举（Enums）为一组数值赋予更友好的名字。
 只读属性（Readonly Properties）确保某些属性只能在创建时被赋值。
 工具类型（Utility Types）是TypeScript内置的一些常用类型转换工具。
+泛型（Generics）允许我们创建可重用的组件，同时保持类型安全。
+模块（Modules）可以帮助我们组织代码，并支持代码的复用。
+函数重载（Function Overloads）允许一个函数接受不同数量或类型的参数。
