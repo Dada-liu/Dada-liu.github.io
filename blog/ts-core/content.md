@@ -30,3 +30,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 类型别名（Type Aliases）可以用来给类型起一个新名字。
 泛型（Generics）允许我们创建可重用的组件，同时保持类型安全。
 类型别名（Type Aliases）可以用来给类型起一个新名字。
+交叉类型（Intersection Types）可以将多个类型合并为一个类型。
+模块（Modules）可以帮助我们组织代码，并支持代码的复用。
