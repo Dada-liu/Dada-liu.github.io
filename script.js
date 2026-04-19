@@ -1,6 +1,15 @@
 // 博客文章配置
 const blogPosts = [
     {
+        id: 'ai-assisted-development',
+        title: 'AI辅助开发最佳实践：从一张图片到一个应用',
+        excerpt: '探索如何利用AI工具从零开始构建一个完整应用，包括架构设计、代码生成、性能优化等环节的实战经验。',
+        date: '2026-04-19',
+        tag: 'AI',
+        image: 'https://picsum.photos/seed/ai-dev/600/320.jpg',
+        content: 'blog/ai-assisted-development/content.md'
+    },
+    {
         id: 'react-core',
         title: 'React 核心：深入理解组件化思想',
         excerpt: '深入探讨 React 的核心概念：组件、JSX、Props、State、虚拟 DOM 等。',
@@ -55,7 +64,7 @@ function loadBlogList() {
                 </div>
                 <h3 class="blog-card-title">${post.title}</h3>
                 <p class="blog-card-excerpt">${post.excerpt}</p>
-                <span class="blog-card-read-more">Read More →</span>
+                <span class="blog-card-read-more">阅读更多 →</span>
             </div>
         </article>
     `).join('');
@@ -84,7 +93,7 @@ async function showBlogDetail(postId) {
     const blogArticle = document.getElementById('blogArticle');
 
     // 显示加载状态
-    blogArticle.innerHTML = '<div style="text-align: center; padding: 40px;">Loading...</div>';
+    blogArticle.innerHTML = '<div style="text-align: center; padding: 40px;">加载中...</div>';
 
     try {
         // 尝试从 Markdown 文件加载内容
@@ -116,7 +125,7 @@ async function showBlogDetail(postId) {
         // 切换到详情页
         switchSection('blog-detail');
     } catch (error) {
-        console.error('Error loading blog post:', error);
+        console.error('加载博客文章出错:', error);
         blogArticle.innerHTML = getPlaceholderContent(post);
     }
 }
