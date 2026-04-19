@@ -505,6 +505,12 @@ body {
     gap: 4px;
 }
 
+.blog-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
 .blog-card-tag {
     background: #f0f0f0;
     padding: 4px 10px;
@@ -606,6 +612,12 @@ body {
 .blog-article-tag {
     display: flex;
     align-items: center;
+    gap: 6px;
+}
+
+.blog-article-tags {
+    display: flex;
+    flex-wrap: wrap;
     gap: 6px;
 }
 

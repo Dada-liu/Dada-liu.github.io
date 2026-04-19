@@ -82,7 +82,9 @@ const blogPosts = [
 my-github-pages/
 ├── index.html          # 主页面结构
 ├── styles.css          # 样式文件
-├── script.js           # 交互逻辑
+├── js/                 # JavaScript 目录
+│   ├── script.js       # 交互逻辑
+│   └── blog-posts.js   # 博客文章配置
 ├── blog/               # 博客文章目录
 │   └── [article-id]/
 │       ├── content.md  # 文章内容

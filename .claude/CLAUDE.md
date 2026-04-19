@@ -20,14 +20,16 @@
 ### 项目结构
 ```
 my-github-pages/
-├── index.html          # 主页面
+├── index.html          # 主页面结构
 ├── styles.css          # 样式文件
-├── script.js           # 交互逻辑
+├── js/                 # JavaScript 目录
+│   ├── script.js       # 交互逻辑
+│   └── blog-posts.js   # 博客文章配置
 ├── blog/               # 博客文章目录
 │   └── [article-id]/
-│       └── content.md  # 文章内容（Markdown）
-├── CLAUDE.md           # 本配置文件
-└── [图片资源...]
+│       ├── content.md  # 文章内容
+│       └── assets/     # 文章图片
+└── README.md           # 本文件
 ```
 
 ### 主要功能模块
@@ -46,7 +48,7 @@ my-github-pages/
     title: '文章标题',
     excerpt: '文章简介',
     date: '2024-02-17',
-    tag: '标签',
+    tag: ['标签1', '标签2'],
     image: '封面图片URL',
     content: 'blog/article-slug/content.md'
 }
