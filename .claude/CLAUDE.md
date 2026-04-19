@@ -1,5 +1,7 @@
 # 用中文回复我所有的问题
 
+# 网页的文案使用中文
+
 git commit 时不要加 Co-Authored-By
 
 ---
