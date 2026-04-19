@@ -1,4 +1,30 @@
 import { blogPosts } from './blog-posts.js';
+import { projects } from './projects.js';
+
+// 加载项目列表
+function loadProjects() {
+    const projectsGrid = document.getElementById('projectsGrid');
+    if (!projectsGrid) return;
+
+    projectsGrid.innerHTML = projects.map(project => `
+        <div class="project-card">
+            <div class="project-image">
+                <img src="${project.image}" alt="${project.title}">
+            </div>
+            <div class="project-info">
+                <h3>${project.title}</h3>
+                <p>${project.description}</p>
+                <div class="project-tech">
+                    ${project.tech.map(t => `<span>${t}</span>`).join('')}
+                </div>
+                <div class="project-links">
+                    <a href="${project.demoUrl}" class="project-link">在线演示</a>
+                    <a href="${project.githubUrl}" class="project-link">GitHub</a>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
 
 // 加载博客列表
 function loadBlogList() {
@@ -211,6 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 加载博客列表
     loadBlogList();
+    loadProjects();
 
     // 侧边栏展开/收起
     const sidebarToggle = document.getElementById('sidebarToggle');

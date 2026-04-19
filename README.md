@@ -18,18 +18,36 @@
 
 ### 1. 博客系统
 
-**数据源**：`blogPosts` 数组 (script.js)
+**数据源**：`blogPosts` 数组 (`js/blog-posts.js`)
 
 ```javascript
-const blogPosts = [
+export const blogPosts = [
     {
         id: 'article-slug',
         title: '文章标题',
         excerpt: '文章简介',
         date: '2024-02-17',
-        tag: '标签',
+        tags: ['标签1', '标签2'],
         image: '封面图片URL',
         content: 'blog/article-slug/content.md'
+    }
+];
+```
+
+### 2. 项目系统
+
+**数据源**：`projects` 数组 (`js/projects.js`)
+
+```javascript
+export const projects = [
+    {
+        id: 'project-slug',
+        title: '项目标题',
+        description: '项目描述',
+        image: '项目图片URL',
+        tech: ['技术1', '技术2'],
+        demoUrl: '演示链接',
+        githubUrl: 'GitHub链接'
     }
 ];
 ```
@@ -84,7 +102,8 @@ my-github-pages/
 ├── styles.css          # 样式文件
 ├── js/                 # JavaScript 目录
 │   ├── script.js       # 交互逻辑
-│   └── blog-posts.js   # 博客文章配置
+│   ├── blog-posts.js  # 博客文章配置
+│   └── projects.js     # 项目配置
 ├── blog/               # 博客文章目录
 │   └── [article-id]/
 │       ├── content.md  # 文章内容
