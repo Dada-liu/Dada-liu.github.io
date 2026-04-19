@@ -2,7 +2,9 @@
 
 # 网页的文案使用中文
 
-git commit 时不要加 Co-Authored-By
+# 每次添加新逻辑时，更新一下README.md文件
+
+# git commit 时不要加 Co-Authored-By
 
 ---
 

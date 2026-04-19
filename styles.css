@@ -29,6 +29,49 @@ body {
     height: 100vh;
     overflow-y: auto;
     border-right: 1px solid #e5e5e5;
+    transition: width 0.3s ease, padding 0.3s ease;
+}
+
+.sidebar-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1001;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: #f5f5f5;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, left 0.3s ease;
+}
+
+.sidebar-toggle.hidden {
+    left: -40px;
+}
+
+/* 移动端顶部导航 - 默认隐藏 */
+.mobile-nav {
+    display: none;
+}
+
+.sidebar-toggle:hover {
+    background: #e5e5e5;
+}
+
+.sidebar.collapsed {
+    width: 0;
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.sidebar.collapsed + .main-content {
+    margin-left: 0;
+    transition: margin-left 0.3s ease;
 }
 
 .profile-section {
@@ -797,6 +840,67 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    /* 隐藏侧边栏 */
+    .sidebar {
+        display: none;
+    }
+
+    .sidebar-toggle {
+        display: none;
+    }
+
+    /* 顶部简约导航 */
+    .mobile-nav {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: white;
+        border-bottom: 1px solid #e5e5e5;
+        padding: 10px 15px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mobile-nav-title {
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    .mobile-nav-menu {
+        display: flex;
+        gap: 15px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .mobile-nav-link {
+        color: #666;
+        text-decoration: none;
+        font-size: 0.875rem;
+        padding: 5px 8px;
+        border-radius: 4px;
+        transition: all 0.2s;
+    }
+
+    .mobile-nav-link:hover,
+    .mobile-nav-link.active {
+        color: #1a1a1a;
+        background: #f5f5f5;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 70px 20px 30px;
+    }
+
     .blog-card {
         flex-direction: column;
         gap: 0;
@@ -807,39 +911,22 @@ body {
         height: 200px;
     }
 
-    .app-container {
-    .app-container {
-        flex-direction: column;
-    }
-    
-    .sidebar {
-        width: 100%;
-        position: relative;
-        height: auto;
-        padding: 30px 20px;
-    }
-    
-    .main-content {
-        margin-left: 0;
-        padding: 30px 20px;
-    }
-    
     .projects-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .timeline::before {
         left: 10px;
     }
-    
+
     .timeline-item {
         padding-left: 20px;
     }
-    
+
     .timeline-item::before {
         left: -18px;
     }
-    
+
     .contact-methods {
         grid-template-columns: 1fr;
     }

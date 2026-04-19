@@ -103,6 +103,7 @@ async function showBlogDetail(postId) {
         if (response.ok) {
             const markdown = await response.text();
             content = parseMarkdown(markdown);
+            content = fixImagePaths(content, post.id);
         } else {
             // 如果无法加载，使用默认内容
             content = getPlaceholderContent(post);
@@ -183,6 +184,20 @@ function parseMarkdown(markdown) {
     return html;
 }
 
+// 修复图片路径 - 添加文章文件夹的相对路径
+function fixImagePaths(html, articleId) {
+    return html.replace(/<img src="([^"]+)"(?:\s+alt="([^"]*)")?/g, (match, src, alt) => {
+        // 如果是绝对URL（http://, https://, //），不处理
+        if (src.startsWith('http://') || src.startsWith('https://') || src.startsWith('//')) {
+            return match;
+        }
+        // 相对路径添加文章文件夹前缀
+        const newSrc = `./blog/${articleId}/${src.replace(/^\.\//, '')}`;
+        const altAttr = alt !== undefined ? ` alt="${alt}"` : '';
+        return `<img src="${newSrc}"${altAttr}>`;
+    });
+}
+
 // 获取占位内容
 function getPlaceholderContent(post) {
     return `
@@ -202,13 +217,17 @@ function getPlaceholderContent(post) {
 // 切换 section
 function switchSection(targetId) {
     const contentSections = document.querySelectorAll('.content-section');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const desktopNavLinks = document.querySelectorAll('.nav-link');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
     contentSections.forEach(section => {
         section.classList.remove('active');
     });
 
-    navLinks.forEach(link => {
+    desktopNavLinks.forEach(link => {
+        link.classList.remove('active');
+    });
+    mobileNavLinks.forEach(link => {
         link.classList.remove('active');
     });
 
@@ -217,9 +236,16 @@ function switchSection(targetId) {
         targetSection.classList.add('active');
     }
 
-    const activeLink = document.querySelector(`[href="#${targetId}"]`);
-    if (activeLink) {
-        activeLink.classList.add('active');
+    // 桌面端导航
+    const desktopActiveLink = document.querySelector(`.nav-link[href="#${targetId}"]`);
+    if (desktopActiveLink) {
+        desktopActiveLink.classList.add('active');
+    }
+
+    // 移动端导航
+    const mobileActiveLink = document.querySelector(`.mobile-nav-link[href="#${targetId}"]`);
+    if (mobileActiveLink) {
+        mobileActiveLink.classList.add('active');
     }
 
     // 滚动到顶部
@@ -228,10 +254,29 @@ function switchSection(targetId) {
 
 // Navigation functionality
 document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
 
     // 加载博客列表
     loadBlogList();
+
+    // 侧边栏展开/收起
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.querySelector('.sidebar');
+    const mainContent = document.querySelector('.main-content');
+
+    if (sidebarToggle && sidebar) {
+        // 默认展开状态
+        let isExpanded = true;
+        sidebarToggle.textContent = '✕';
+        sidebarToggle.title = '收起侧边栏';
+
+        sidebarToggle.addEventListener('click', () => {
+            isExpanded = !isExpanded;
+            sidebar.classList.toggle('collapsed', !isExpanded);
+            sidebarToggle.textContent = isExpanded ? '✕' : '☰';
+            sidebarToggle.title = isExpanded ? '收起侧边栏' : '展开侧边栏';
+        });
+    }
 
     // 返回按钮事件
     const backToBlogBtn = document.getElementById('backToBlog');

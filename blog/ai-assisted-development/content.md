@@ -14,7 +14,7 @@
 
 效果如下：
 
-<img src="./assets/1776580127715.png" />
+<img src="./assets/1776580127715.png" >
 
 
 
