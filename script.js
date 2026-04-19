@@ -110,6 +110,7 @@ async function showBlogDetail(postId) {
         }
 
         blogArticle.innerHTML = `
+            ${post.image ? `<div class="blog-article-hero"><img src="${post.image}" alt="${post.title}"></div>` : ''}
             <header class="blog-article-header">
                 <h1 class="blog-article-title">${post.title}</h1>
                 <div class="blog-article-meta">
@@ -117,7 +118,6 @@ async function showBlogDetail(postId) {
                     <span class="blog-article-tag">🏷️ ${post.tag}</span>
                 </div>
             </header>
-            ${post.image ? `<div class="blog-article-hero"><img src="${post.image}" alt="${post.title}"></div>` : ''}
             <div class="blog-article-content">
                 ${content}
             </div>
@@ -194,7 +194,7 @@ function fixImagePaths(html, articleId) {
         // 相对路径添加文章文件夹前缀
         const newSrc = `./blog/${articleId}/${src.replace(/^\.\//, '')}`;
         const altAttr = alt !== undefined ? ` alt="${alt}"` : '';
-        return `<img src="${newSrc}"${altAttr}>`;
+        return `<img src="${newSrc}"${altAttr}`;
     });
 }
 
