@@ -88,6 +88,10 @@ async function showBlogDetail(postId) {
             content = getPlaceholderContent(post);
         }
 
+        // 提取目录
+        const toc = extractTableOfContents(content);
+        const tocHtml = generateTocHtml(toc);
+
         blogArticle.innerHTML = `
             ${post.image ? `<div class="blog-article-hero"><img src="${post.image}" alt="${post.title}"></div>` : ''}
             <header class="blog-article-header">
@@ -97,13 +101,19 @@ async function showBlogDetail(postId) {
                     <span class="blog-article-tags">${post.tags.map(tag => `<span class="blog-article-tag">${tag}</span>`).join('')}</span>
                 </div>
             </header>
-            <div class="blog-article-content">
-                ${content}
+            <div class="blog-article-body">
+                <div class="blog-article-content">
+                    ${content}
+                </div>
+                ${tocHtml ? `<aside class="blog-article-sidebar">${tocHtml}</aside>` : ''}
             </div>
         `;
 
         // 切换到详情页
         switchSection('blog-detail');
+
+        // 初始化目录滚动监听
+        initTocScrollSpy(toc);
     } catch (error) {
         console.error('加载博客文章出错:', error);
         blogArticle.innerHTML = getPlaceholderContent(post);
@@ -114,22 +124,45 @@ async function showBlogDetail(postId) {
 function parseMarkdown(markdown) {
     let html = markdown;
 
-    // 代码块
+    // 代码块 - 先处理，避免代码块内的内容被其他规则影响
     html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>');
 
     // 行内代码
     html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
 
-    // 标题
-    html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
-    html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
-    html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+    // 标题 - 使用占位符保护代码块，确保不匹配代码块内的标题
+    const codePlaceholder = '___CODE_BLOCK_PLACEHOLDER___';
+    const codeBlocks = [];
+    html = html.replace(/<pre><code>[\s\S]*?<\/code><\/pre>/g, (match) => {
+        codeBlocks.push(match);
+        return `${codePlaceholder}${codeBlocks.length - 1}${codePlaceholder}`;
+    });
+
+    // 标题处理 - 为每个标题添加唯一 id 用于目录跳转
+    let headingIndex = 0;
+    html = html.replace(/^### (.+)$/gm, (match, text) => {
+        const id = `heading-${headingIndex++}`;
+        return `<h3 id="${id}" class="article-heading">${text}</h3>`;
+    });
+    html = html.replace(/^## (.+)$/gm, (match, text) => {
+        const id = `heading-${headingIndex++}`;
+        return `<h2 id="${id}" class="article-heading">${text}</h2>`;
+    });
+    html = html.replace(/^# (.+)$/gm, (match, text) => {
+        const id = `heading-${headingIndex++}`;
+        return `<h1 id="${id}" class="article-heading">${text}</h1>`;
+    });
+
+    // 恢复代码块
+    codeBlocks.forEach((block, index) => {
+        html = html.replace(`${codePlaceholder}${index}${codePlaceholder}`, block);
+    });
 
     // 图片
     html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
 
     // 链接
-    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" style="color: #3b86ef;">$1</a>');
 
     // 粗体
     html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
@@ -161,6 +194,87 @@ function parseMarkdown(markdown) {
     html = html.replace(/(<\/blockquote>)<\/p>/g, '$1');
 
     return html;
+}
+
+// 提取文章目录
+function extractTableOfContents(html) {
+    const toc = [];
+    const regex = /<h([1-2])\s+id="(heading-\d+)"\s+class="article-heading">(.+?)<\/h\1>/g;
+    let match;
+
+    while ((match = regex.exec(html)) !== null) {
+        toc.push({
+            level: parseInt(match[1]),
+            id: match[2],
+            text: match[3]
+        });
+    }
+
+    return toc;
+}
+
+// 生成目录 HTML
+function generateTocHtml(toc) {
+    if (toc.length === 0) return '';
+
+    return `
+        <nav class="article-toc">
+            <h4 class="toc-title">目录</h4>
+            <ul class="toc-list">
+                ${toc.map(item => `
+                    <li class="toc-item toc-level-${item.level}">
+                        <a href="#${item.id}" class="toc-link">${item.text}</a>
+                    </li>
+                `).join('')}
+            </ul>
+        </nav>
+    `;
+}
+
+// 目录滚动监听 - 高亮当前可见的标题
+function initTocScrollSpy(toc) {
+    if (toc.length === 0) return;
+
+    const tocLinks = document.querySelectorAll('.toc-link');
+    const headingIds = toc.map(item => item.id);
+
+    // 点击目录链接，平滑滚动
+    tocLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                const offset = 80; // 考虑固定导航的偏移
+                const top = targetElement.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        });
+    });
+
+    // 滚动时更新高亮
+    function updateActiveLink() {
+        const scrollY = window.scrollY;
+        let currentId = null;
+
+        headingIds.forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+                const offset = 100;
+                if (element.offsetTop - offset <= scrollY) {
+                    currentId = id;
+                }
+            }
+        });
+
+        tocLinks.forEach(link => {
+            const linkId = link.getAttribute('href').substring(1);
+            link.classList.toggle('active', linkId === currentId);
+        });
+    }
+
+    window.addEventListener('scroll', updateActiveLink);
+    updateActiveLink(); // 初始化
 }
 
 // 修复图片路径 - 添加文章文件夹的相对路径

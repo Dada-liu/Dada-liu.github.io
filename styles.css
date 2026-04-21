@@ -646,8 +646,90 @@ body {
     color: #333;
     font-size: 1.0625rem;
     line-height: 1.8;
+    flex: 1;
+    min-width: 0;
 }
 
+/* 文章主体布局 - 侧边目录 */
+.blog-article-body {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.blog-article-sidebar {
+    width: 180px;
+    flex-shrink: 0;
+    position: fixed;
+    top: 300px;
+    right: 0;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+}
+
+/* 目录样式 */
+.article-toc {
+    background: #fafafa;
+    /* border-radius: 8px; */
+    /* padding: 16px; */
+    /* border: 1px solid #e5e5e5; */
+}
+
+.toc-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc-item {
+    margin-bottom: 4px;
+}
+
+.toc-link {
+    display: block;
+    color: #666;
+    text-decoration: none;
+    font-size: 0.8125rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s;
+    border-left: 2px solid transparent;
+}
+
+.toc-link:hover {
+    color: #1a1a1a;
+    background: #f0f0f0;
+}
+
+.toc-link.active {
+    color: #3b86ef;
+    background: #f0f7ff;
+    border-left-color: #3b86ef;
+}
+
+.toc-level-1 .toc-link {
+    font-weight: 500;
+}
+
+.toc-level-2 .toc-link {
+    padding-left: 16px;
+}
+
+.toc-level-3 .toc-link {
+    padding-left: 24px;
+    font-size: 0.75rem;
+}
+
+/* 文章内容中的标题 */
 .blog-article-content h1,
 .blog-article-content h2,
 .blog-article-content h3 {
@@ -911,6 +993,21 @@ body {
     .main-content {
         margin-left: 0;
         padding: 70px 20px 30px;
+    }
+
+    .blog-article-body {
+        flex-direction: column;
+    }
+
+    .blog-article-sidebar {
+        width: 100%;
+        position: static;
+        max-height: none;
+        margin-bottom: 24px;
+    }
+
+    .article-toc {
+        display: none; /* 移动端隐藏侧边目录，可根据需要改为折叠形式 */
     }
 
     .blog-card {
