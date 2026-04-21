@@ -1,13 +1,14 @@
 // 项目数据配置
 export const projects = [
-    {
-        id: 'ecommerce-platform',
-        title: '电商平台',
-        description: '使用 React、Node.js 和 MongoDB 构建的全栈电商解决方案，包含用户认证、支付处理和管理后台等功能。',
-        image: 'https://picsum.photos/seed/project1/400/200.jpg',
-        tech: ['React', 'Node.js', 'MongoDB'],
-        demoUrl: '#',
-        githubUrl: '#'
+    {                                                                                       
+      id: 'resume-generator',                                                           
+      title: '简历编辑器',                                                                
+      description: '使用 React 19、TypeScript 和 Tailwind CSS 构建的在线简历编辑工具，支持实时预览、PDF 导出和数据持久化。',                          
+      image: './projects/assets/websit-preview.png',
+      tech: ['React 19', 'TypeScript', 'Tailwind CSS', 'Zustand', 'jspdf',                
+  'react-hook-form', 'Zod'], 
+      demoUrl: 'https://dada-liu.github.io/resume-generator/',
+      githubUrl: 'https://github.com/dada-liu/resume-generator-2'
     },
     {
         id: 'task-management',

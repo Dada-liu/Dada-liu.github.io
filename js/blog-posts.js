@@ -2,8 +2,8 @@
 export const blogPosts = [
     {
         id: 'ai-assisted-development',
-        title: '使用 ClaudeCode：从一张图片到一个应用',
-        excerpt: '探索如何高效利用AI工具从零开始构建一个完整应用',
+        title: '一张图 → 完整应用：我用 ClaudeCode 复刻了这个开发流程',
+        excerpt: '不再一行行敲代码。记录我用 ClaudeCode 把一张截图变成完整应用的每一步。',
         date: '2026-04-19',
         tags: ['AI', 'ClaudeCode'],
         image: 'blog/ai-assisted-development/assets/1776222397194.png',

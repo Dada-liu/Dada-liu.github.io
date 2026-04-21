@@ -1,5 +1,5 @@
 import { blogPosts } from './blog-posts.js';
-import { projects } from './projects.js';
+import { projects } from '../projects/projects.js';
 
 // 加载项目列表
 function loadProjects() {
@@ -18,8 +18,8 @@ function loadProjects() {
                     ${project.tech.map(t => `<span>${t}</span>`).join('')}
                 </div>
                 <div class="project-links">
-                    <a href="${project.demoUrl}" class="project-link">在线演示</a>
-                    <a href="${project.githubUrl}" class="project-link">GitHub</a>
+                    <a href="${project.demoUrl}" class="project-link" target="_blank">在线演示</a>
+                    <a href="${project.githubUrl}" class="project-link" target="_blank">GitHub</a>
                 </div>
             </div>
         </div>
