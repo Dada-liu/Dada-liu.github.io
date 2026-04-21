@@ -2,11 +2,11 @@
 export const blogPosts = [
     {
         id: 'ai-assisted-development',
-        title: 'AI辅助开发最佳实践：从一张图片到一个应用',
-        excerpt: '探索如何利用AI工具从零开始构建一个完整应用，包括架构设计、代码生成、性能优化等环节的实战经验。',
+        title: '使用 ClaudeCode：从一张图片到一个应用',
+        excerpt: '探索如何高效利用AI工具从零开始构建一个完整应用',
         date: '2026-04-19',
-        tags: ['AI', '开发工具', '最佳实践'],
-        image: 'https://picsum.photos/seed/ai-dev/600/320.jpg',
+        tags: ['AI', 'ClaudeCode'],
+        image: 'blog/ai-assisted-development/assets/1776222397194.png',
         content: 'blog/ai-assisted-development/content.md'
     },
     {

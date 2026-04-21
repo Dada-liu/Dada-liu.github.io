@@ -479,6 +479,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top left;
     transition: transform 0.5s ease;
 }
 
@@ -640,6 +641,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top left;
 }
 
 .blog-article-content {
@@ -669,10 +671,6 @@ body {
 
 /* 目录样式 */
 .article-toc {
-    background: #fafafa;
-    /* border-radius: 8px; */
-    /* padding: 16px; */
-    /* border: 1px solid #e5e5e5; */
 }
 
 .toc-title {
