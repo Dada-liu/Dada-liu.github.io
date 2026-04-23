@@ -35,3 +35,4 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 枚举（Enums）为一组数值赋予更友好的名字。
 索引类型（Index Types）允许我们通过索引获取类型。
 命名空间（Namespaces）用于组织代码，避免命名冲突。
+函数重载（Function Overloads）允许一个函数接受不同数量或类型的参数。
