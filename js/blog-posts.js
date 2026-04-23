@@ -1,6 +1,15 @@
 // 博客文章配置
 export const blogPosts = [
     {
+        id: 'quantitative-trading-basics',
+        title: '量化交易业务基础知识',
+        excerpt: '介绍量化交易的核心概念、业务流程、策略类型以及技术架构，帮助入门者建立完整的量化交易知识体系。',
+        date: '2026-04-23',
+        tags: ['量化交易', '金融', '业务知识'],
+        image: 'https://picsum.photos/seed/quant-trading/600/320.jpg',
+        content: 'blog/quantitative-trading-basics/content.md'
+    },
+    {
         id: 'ai-assisted-development',
         title: '一张图 → 完整应用：我用 ClaudeCode 复刻了这个开发流程',
         excerpt: '不再一行行敲代码。记录我用 ClaudeCode 把一张截图变成完整应用的每一步。',
