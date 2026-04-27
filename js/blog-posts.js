@@ -1,6 +1,15 @@
 // 博客文章配置
 export const blogPosts = [
     {
+        id: 'vite-core',
+        title: 'Vite 核心特性',
+        excerpt: '深入探索 Vite 的核心特性：极速冷启动、模块热更新、构建优化、插件系统等，帮助你全面理解这个新一代构建工具。',
+        date: '2026-04-27',
+        tags: ['Vite', '前端', '构建工具'],
+        image: 'https://picsum.photos/seed/vite-core/600/320.jpg',
+        content: 'blog/vite-core/content.md'
+    },
+    {
         id: 'quantitative-trading-basics',
         title: '量化交易业务基础知识',
         excerpt: '介绍量化交易的核心概念、业务流程、策略类型以及技术架构，帮助入门者建立完整的量化交易知识体系。',

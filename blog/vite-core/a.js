@@ -1,0 +1,1 @@
+export const msg = "我是 A 模块"
