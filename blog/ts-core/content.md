@@ -37,3 +37,4 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 命名空间（Namespaces）用于组织代码，避免命名冲突。
 函数重载（Function Overloads）允许一个函数接受不同数量或类型的参数。
 类型守卫（Type Guards）允许我们在运行时检查类型。
+条件类型（Conditional Types）允许我们根据条件选择不同的类型。

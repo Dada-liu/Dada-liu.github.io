@@ -19,13 +19,13 @@ export const blogPosts = [
         content: 'blog/ai-assisted-development/content.md'
     },
     {
-        id: 'react-core',
-        title: 'React 核心：深入理解组件化思想',
+        id: 'react-version-history',
+        title: 'React 版本历史和特性',
         excerpt: '深入探讨 React 的核心概念：组件、JSX、Props、State、虚拟 DOM 等。',
         date: '2024-02-17',
         tags: ['React', '前端'],
-        image: 'https://picsum.photos/seed/react-core/600/320.jpg',
-        content: 'blog/react-core/content.md'
+        image: 'https://picsum.photos/seed/react-version-history/600/320.jpg',
+        content: 'blog/react-version-history/content.md'
     },
     {
         id: 'css-selector-priority-cascade-inheritance',

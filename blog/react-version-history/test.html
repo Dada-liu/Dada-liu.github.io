@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>浏览器空闲检测演示</h1>
+  <script>
+    let idleFlag;
+    // 模拟 React Fiber 的「空闲执行」逻辑
+    function doIdleWork(deadline) {
+      console.log("当前帧剩余空闲时间：", deadline.timeRemaining(), "ms");
+
+      // 只要还有空闲时间，就继续做低优任务
+      while ((deadline.timeRemaining() % 3) > 0) {
+        console.log("✅ 浏览器空闲，执行低优任务...");
+      }
+
+      // 没有空闲了，等下一次空闲
+      idleFlag = requestIdleCallback(doIdleWork);
+    }
+
+    // 启动空闲监听
+    requestIdleCallback(doIdleWork);
+
+    // ======================================
+    // 下面模拟：浏览器忙的时候 → idle 任务自动暂停
+    // ======================================
+    function makeBusy() {
+      console.log("🔴 浏览器开始忙（模拟卡顿 500ms）");
+      const start = performance.now();
+      while (performance.now() - start < 500) {}
+      console.log("🟢 浏览器忙完了");
+      cancelIdleCallback(idleFlag)
+    }
+
+    // 3 秒后故意让浏览器忙
+    setTimeout(makeBusy, 3000);
+  </script>
+</body>
+</html>
