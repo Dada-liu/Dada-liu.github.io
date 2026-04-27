@@ -120,78 +120,39 @@ async function showBlogDetail(postId) {
     }
 }
 
-// 简单的 Markdown 解析器
+// 使用 marked.js 解析 Markdown
 function parseMarkdown(markdown) {
-    let html = markdown;
-
-    // 代码块 - 先处理，避免代码块内的内容被其他规则影响
-    html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>');
-
-    // 行内代码
-    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
-
-    // 标题 - 使用占位符保护代码块，确保不匹配代码块内的标题
-    const codePlaceholder = '___CODE_BLOCK_PLACEHOLDER___';
-    const codeBlocks = [];
-    html = html.replace(/<pre><code>[\s\S]*?<\/code><\/pre>/g, (match) => {
-        codeBlocks.push(match);
-        return `${codePlaceholder}${codeBlocks.length - 1}${codePlaceholder}`;
+    // 配置 marked
+    marked.setOptions({
+        breaks: true, // 允许换行
+        gfm: true    // GitHub 风格 Markdown
     });
 
-    // 标题处理 - 为每个标题添加唯一 id 用于目录跳转
+    // 自定义渲染器：为标题添加 id 和 class
+    const renderer = new marked.Renderer();
+
+    // 标题 - 添加 id 用于目录跳转
     let headingIndex = 0;
-    html = html.replace(/^### (.+)$/gm, (match, text) => {
+    renderer.heading = function({ text, depth }) {
         const id = `heading-${headingIndex++}`;
-        return `<h3 id="${id}" class="article-heading">${text}</h3>`;
-    });
-    html = html.replace(/^## (.+)$/gm, (match, text) => {
-        const id = `heading-${headingIndex++}`;
-        return `<h2 id="${id}" class="article-heading">${text}</h2>`;
-    });
-    html = html.replace(/^# (.+)$/gm, (match, text) => {
-        const id = `heading-${headingIndex++}`;
-        return `<h1 id="${id}" class="article-heading">${text}</h1>`;
-    });
+        return `<h${depth} id="${id}" class="article-heading">${text}</h${depth}>`;
+    };
 
-    // 恢复代码块
-    codeBlocks.forEach((block, index) => {
-        html = html.replace(`${codePlaceholder}${index}${codePlaceholder}`, block);
-    });
+    // 链接 - 新窗口打开
+    renderer.link = function({ href, title, text }) {
+        return `<a href="${href}" target="_blank" style="color: #3b86ef;"${title ? ` title="${title}"` : ''}>${text}</a>`;
+    };
 
-    // 图片
-    html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
+    // 代码块 - 添加语言 class
+    renderer.code = function({ text, lang }) {
+        const language = lang || '';
+        return `<pre><code class="language-${language}">${text}</code></pre>`;
+    };
 
-    // 链接
-    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" style="color: #3b86ef;">$1</a>');
+    marked.use({ renderer });
 
-    // 粗体
-    html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-
-    // 斜体
-    html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-
-    // 引用
-    html = html.replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>');
-
-    // 无序列表
-    html = html.replace(/^\- (.+)$/gm, '<li>$1</li>');
-    html = html.replace(/(<li>.*<\/li>)\n(?!<li>)/g, '$1</ul>\n');
-    html = html.replace(/(?<!<\/ul>\n)(<li>)/g, '<ul>$1');
-
-    // 段落
-    html = html.replace(/\n\n/g, '</p><p>');
-    html = '<p>' + html + '</p>';
-
-    // 清理空标签
-    html = html.replace(/<p><\/p>/g, '');
-    html = html.replace(/<p>(<h[1-3]>)/g, '$1');
-    html = html.replace(/(<\/h[1-3]>)<\/p>/g, '$1');
-    html = html.replace(/<p>(<ul>)/g, '$1');
-    html = html.replace(/(<\/ul>)<\/p>/g, '$1');
-    html = html.replace(/<p>(<pre>)/g, '$1');
-    html = html.replace(/(<\/pre>)<\/p>/g, '$1');
-    html = html.replace(/<p>(<blockquote>)/g, '$1');
-    html = html.replace(/(<\/blockquote>)<\/p>/g, '$1');
+    // 解析 Markdown
+    let html = marked.parse(markdown);
 
     return html;
 }
