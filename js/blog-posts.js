@@ -1,6 +1,15 @@
 // 博客文章配置
 export const blogPosts = [
     {
+        id: 'frontend-performance-optimization',
+        title: '前端性能优化',
+        excerpt: '系统性地介绍前端性能优化的各个方面：加载性能、渲染性能、资源加载、图片优化、代码优化等。',
+        date: '2026-04-27',
+        tags: ['前端', '性能优化', 'Web'],
+        image: 'https://picsum.photos/seed/frontend-perf/600/320.jpg',
+        content: 'blog/frontend-performance-optimization/content.md'
+    },
+    {
         id: 'vite-core',
         title: 'Vite 核心特性',
         excerpt: '深入探索 Vite 的核心特性：极速冷启动、模块热更新、构建优化、插件系统等，帮助你全面理解这个新一代构建工具。',
