@@ -21,3 +21,5 @@ TypeScript 是 JavaScript 的一个超集，它添加了静态类型检查。本
 交叉类型（Intersection Types）可以将多个类型合并为一个类型。
 装饰器（Decorators）是一种特殊类型的声明，可以附加到类、方法、属性或参数上。
 工具类型（Utility Types）是TypeScript内置的一些常用类型转换工具。
+类型断言（Type Assertions）允许我们手动指定值的类型。
+类型推断（Type Inference）让TypeScript能够自动推断变量的类型。
