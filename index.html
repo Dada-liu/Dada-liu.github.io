@@ -18,17 +18,16 @@
                 <li><a href="#skills" class="mobile-nav-link">技能</a></li>
                 <li><a href="#projects" class="mobile-nav-link">项目</a></li>
                 <li><a href="#blog" class="mobile-nav-link">博客</a></li>
-                <li><a href="#experience" class="mobile-nav-link">经历</a></li>
             </ul>
         </nav>
         <button class="sidebar-toggle" id="sidebarToggle" title="收起侧边栏">☰</button>
         <aside class="sidebar">
             <div class="profile-section">
                 <div class="avatar">
-                    <img src="./IMG_5054.jpg" alt="Profile Picture" class="profile-img">
+                    <img src="./images/avatar.webp" alt="Profile Picture" class="profile-img">
                 </div>
                 <h1 class="name">Liu Yu</h1>
-                <p class="title">全栈开发工程师</p>
+                <p class="title">前端开发工程师</p>
                 <p class="location">📍 Beijing, China</p>
                 
                 <div class="social-links">
@@ -55,7 +54,6 @@
                     <li><a href="#skills" class="nav-link">技能</a></li>
                     <li><a href="#projects" class="nav-link">项目</a></li>
                     <li><a href="#blog" class="nav-link">博客</a></li>
-                    <li><a href="#experience" class="nav-link">经历</a></li>
                 </ul>
             </nav>
         </aside>
@@ -64,11 +62,44 @@
             <section id="about" class="content-section active">
                 <div class="section-header">
                     <h2>关于我</h2>
-                    <p>了解更多关于我的信息</p>
                 </div>
-                <div class="about-content">
-                    <p>我是一名充满热情的全栈开发工程师，拥有3年以上的可扩展Web应用开发经验。我热衷于将复杂的问题转化为简单、优雅的解决方案。</p>
-                    <p>当我不写代码时，我喜欢探索新技术、为开源项目贡献力量，并与开发者社区分享知识。</p>
+                <div class="about-tabs">
+                    <button class="about-tab active" data-about-tab="about-me">关于我</button>
+                    <button class="about-tab" data-about-tab="experience">工作经历</button>
+                    <button class="about-tab" data-about-tab="hobbies">爱好</button>
+                    <button class="about-tab" data-about-tab="investment">投资</button>
+                </div>
+                <div class="about-tab-content active" id="about-me">
+                    <div class="about-content">
+                        <p>我是一名充满热情的 vibe coding 开发工程师，拥有3年的前端开发经验。我热衷于将复杂的问题转化为简单、优雅的解决方案。</p>
+                        <p>当我不写代码时，我喜欢探索新技术、为开源项目贡献力量，并与开发者社区分享知识。</p>
+                    </div>
+                </div>
+                <div class="about-tab-content" id="about-experience">
+                    <div class="timeline" id="experienceTimeline">
+                        <!-- 经历将通过 JS 动态加载 -->
+                    </div>
+                </div>
+                <div class="about-tab-content" id="about-hobbies">
+                    <div class="about-content">
+                        <p>身体是革命的本钱，保持体育运动；</p>
+                        <p>追求极限，探索更高阶的运动；</p>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="./images/hobby-1.webp" alt="爱好 1" class="gallery-image">
+                        <img src="./images/hobby-2.webp" alt="爱好 2" class="gallery-image">
+                        <img src="./images/hobby-3.webp" alt="爱好 3" class="gallery-image">
+                    </div>
+                </div>
+                <div class="about-tab-content" id="about-investment">
+                    <div class="about-content">
+                        <p>
+                            欢迎加好友一起探讨
+                        </p>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="./images/invest.webp" alt="投资" class="gallery-image">
+                    </div>
                 </div>
             </section>
 
@@ -135,38 +166,6 @@
                 </article>
             </section>
 
-            <section id="experience" class="content-section">
-                <div class="section-header">
-                    <h2>经历</h2>
-                    <p>我的职业历程</p>
-                </div>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2022 - 至今</div>
-                        <div class="timeline-content">
-                            <h3>高级全栈开发工程师</h3>
-                            <p class="company">某科技公司</p>
-                            <p>主导微服务架构开发，指导初级开发工程师成长。</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2020 - 2022</div>
-                        <div class="timeline-content">
-                            <h3>全栈开发工程师</h3>
-                            <p class="company">某创业公司</p>
-                            <p>构建可扩展的Web应用，将系统性能提升40%。</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2019 - 2020</div>
-                        <div class="timeline-content">
-                            <h3>初级开发工程师</h3>
-                            <p class="company">某数字代理商</p>
-                            <p>为客户开发网站，学习现代开发实践。</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             <section id="contact" class="content-section">
                 <div class="section-header">

@@ -1,5 +1,23 @@
 import { blogPosts } from './blog-posts.js';
 import { projects } from '../projects/projects.js';
+import { experiences } from './experience.js';
+
+// 加载经历时间线
+function loadExperience() {
+    const timeline = document.getElementById('experienceTimeline');
+    if (!timeline) return;
+
+    timeline.innerHTML = experiences.map(exp => `
+        <div class="timeline-item">
+            <div class="timeline-date">${exp.period}</div>
+            <div class="timeline-content">
+                <h3>${exp.title}</h3>
+                <p class="company">${exp.company}</p>
+                ${exp.description.map(desc => `<p>${desc}</p>`).join('')}
+            </div>
+        </div>
+    `).join('');
+}
 
 // 加载项目列表
 function loadProjects() {
@@ -313,6 +331,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 加载博客列表
     loadBlogList();
     loadProjects();
+    loadExperience();
 
     // 侧边栏展开/收起
     const sidebarToggle = document.getElementById('sidebarToggle');
@@ -332,6 +351,23 @@ document.addEventListener('DOMContentLoaded', function() {
             sidebarToggle.title = isExpanded ? '收起侧边栏' : '展开侧边栏';
         });
     }
+
+    // 关于我页面 Tab 切换
+    const aboutTabs = document.querySelectorAll('.about-tab');
+    const aboutTabContents = document.querySelectorAll('.about-tab-content');
+
+    aboutTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const targetTab = tab.dataset.aboutTab;
+            const targetContentId = targetTab === 'about-me' ? 'about-me' : `about-${targetTab}`;
+
+            aboutTabs.forEach(t => t.classList.remove('active'));
+            aboutTabContents.forEach(c => c.classList.remove('active'));
+
+            tab.classList.add('active');
+            document.getElementById(targetContentId).classList.add('active');
+        });
+    });
 
     // 返回按钮事件
     const backToBlogBtn = document.getElementById('backToBlog');
