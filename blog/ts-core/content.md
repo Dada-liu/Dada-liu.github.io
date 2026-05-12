@@ -24,3 +24,4 @@ TypeScript 是 JavaScript 的一个超集，它添加了静态类型检查。本
 类型断言（Type Assertions）允许我们手动指定值的类型。
 类型推断（Type Inference）让TypeScript能够自动推断变量的类型。
 TypeScript的类型系统可以帮助我们在编译时捕获错误。
+命名空间（Namespaces）用于组织代码，避免命名冲突。
