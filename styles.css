@@ -120,6 +120,8 @@ body {
     display: flex;
     justify-content: center;
     gap: 15px;
+
+    transform: scale(1)
 }
 
 .social-link {
