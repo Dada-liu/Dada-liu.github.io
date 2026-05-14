@@ -27,3 +27,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 命名空间（Namespaces）用于组织代码，避免命名冲突。
 接口（Interface）是TypeScript的核心概念之一，用于定义对象的形状。
 条件类型（Conditional Types）允许我们根据条件选择不同的类型。
+只读属性（Readonly Properties）确保某些属性只能在创建时被赋值。
+模块（Modules）可以帮助我们组织代码，并支持代码的复用。
