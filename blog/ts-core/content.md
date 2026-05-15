@@ -29,3 +29,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 条件类型（Conditional Types）允许我们根据条件选择不同的类型。
 只读属性（Readonly Properties）确保某些属性只能在创建时被赋值。
 模块（Modules）可以帮助我们组织代码，并支持代码的复用。
+索引类型（Index Types）允许我们通过索引获取类型。
+类型推断（Type Inference）让TypeScript能够自动推断变量的类型。
