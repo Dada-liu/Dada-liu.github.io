@@ -33,3 +33,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 类型推断（Type Inference）让TypeScript能够自动推断变量的类型。
 接口（Interface）是TypeScript的核心概念之一，用于定义对象的形状。
 命名空间（Namespaces）用于组织代码，避免命名冲突。
+映射类型（Mapped Types）允许我们基于旧类型创建新类型。
+映射类型（Mapped Types）允许我们基于旧类型创建新类型。
