@@ -1,6 +1,15 @@
 // 博客文章配置
 export const blogPosts = [
     {
+        id: 'claude-code-advanced',
+        title: '使用 ClaudeCode 开发第二弹：进阶技巧与最佳实践',
+        excerpt: '继上一弹之后，我总结了 Plan Mode、MCP、Hooks、多 Agent 协作等进阶技巧，让 Claude Code 的日常开发效率再上一个台阶。',
+        date: '2026-05-18',
+        tags: ['AI', 'ClaudeCode', '效率'],
+        image: 'blog/claude-code-advanced/assets/1779110077660.png',
+        content: 'blog/claude-code-advanced/content.md'
+    },
+    {
         id: 'frontend-performance-optimization',
         title: '前端性能优化',
         excerpt: '系统性地介绍前端性能优化的各个方面：加载性能、渲染性能、资源加载、图片优化、代码优化等。',
