@@ -151,6 +151,10 @@ body {
     height: 20px;
 }
 
+.social-links-secondary {
+    margin-top: 4px;
+}
+
 /* 微信弹窗样式 */
 .wechat-container {
     position: relative;
