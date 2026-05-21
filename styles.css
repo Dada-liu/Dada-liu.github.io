@@ -28,7 +28,7 @@ body {
     position: fixed;
     height: 100vh;
     border-right: 1px solid #e5e5e5;
-    transition: width 0.3s ease, padding 0.3s ease;
+    transition: width 0.3s ease, padding 0.3s ease, visibility 0.3s ease, opacity 0.3s ease;
 }
 
 .sidebar-toggle {
@@ -66,6 +66,8 @@ body {
     width: 0;
     padding: 60px 0;
     overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
 }
 
 .sidebar.collapsed + .main-content {
