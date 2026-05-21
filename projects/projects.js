@@ -29,14 +29,5 @@ export const projects = [
         ],
         "demoUrl": "",
         "githubUrl": "https://github.com/Dada-liu/quant-fe-components"
-    },
-    {
-        id: 'weather-dashboard',
-        title: '天气仪表盘',
-        description: '一款响应式天气仪表盘，提供基于位置的天气预报、交互式地图和历史天气数据可视化。',
-        image: 'https://picsum.photos/seed/project3/400/200.jpg',
-        tech: ['JavaScript', 'API集成', 'Chart.js'],
-        demoUrl: '#',
-        githubUrl: '#'
     }
 ];
