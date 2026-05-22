@@ -35,3 +35,4 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 命名空间（Namespaces）用于组织代码，避免命名冲突。
 映射类型（Mapped Types）允许我们基于旧类型创建新类型。
 映射类型（Mapped Types）允许我们基于旧类型创建新类型。
+类型断言（Type Assertions）允许我们手动指定值的类型。
