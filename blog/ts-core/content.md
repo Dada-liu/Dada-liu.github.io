@@ -36,3 +36,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 映射类型（Mapped Types）允许我们基于旧类型创建新类型。
 映射类型（Mapped Types）允许我们基于旧类型创建新类型。
 类型断言（Type Assertions）允许我们手动指定值的类型。
+可选属性（Optional Properties）允许我们定义一些可选的属性。
+联合类型（Union Types）表示一个值可以是几种类型之一。
