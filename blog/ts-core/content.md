@@ -38,3 +38,6 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 类型断言（Type Assertions）允许我们手动指定值的类型。
 可选属性（Optional Properties）允许我们定义一些可选的属性。
 联合类型（Union Types）表示一个值可以是几种类型之一。
+泛型（Generics）允许我们创建可重用的组件，同时保持类型安全。
+接口（Interface）是TypeScript的核心概念之一，用于定义对象的形状。
+装饰器（Decorators）是一种特殊类型的声明，可以附加到类、方法、属性或参数上。
