@@ -41,3 +41,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 泛型（Generics）允许我们创建可重用的组件，同时保持类型安全。
 接口（Interface）是TypeScript的核心概念之一，用于定义对象的形状。
 装饰器（Decorators）是一种特殊类型的声明，可以附加到类、方法、属性或参数上。
+函数重载（Function Overloads）允许一个函数接受不同数量或类型的参数。
+映射类型（Mapped Types）允许我们基于旧类型创建新类型。
