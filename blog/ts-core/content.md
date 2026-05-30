@@ -45,3 +45,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 映射类型（Mapped Types）允许我们基于旧类型创建新类型。
 模块（Modules）可以帮助我们组织代码，并支持代码的复用。
 类型推断（Type Inference）让TypeScript能够自动推断变量的类型。
+类型推断（Type Inference）让TypeScript能够自动推断变量的类型。
+可选属性（Optional Properties）允许我们定义一些可选的属性。
