@@ -1,15 +1,6 @@
 // 博客文章配置
 export const blogPosts = [
     {
-        id: 'hash-vs-history-routing',
-        title: 'Hash 路由和 History 路由',
-        excerpt: '深入对比前端两种路由模式：Hash 路由和 History 路由的原理、实现、优缺点、服务端配置以及在不同框架中的使用方式。',
-        date: '2026-05-31',
-        tags: ['前端', '路由', 'SPA'],
-        image: 'https://picsum.photos/seed/hash-history-routing/600/320.jpg',
-        content: 'blog/hash-vs-history-routing/content.md'
-    },
-    {
         id: 'claude-code-advanced',
         title: '使用 ClaudeCode 开发第二弹：进阶技巧与最佳实践',
         excerpt: '继上一弹之后，我总结了 Plan Mode、MCP、Hooks、多 Agent 协作等进阶技巧，让 Claude Code 的日常开发效率再上一个台阶。',
@@ -55,6 +46,15 @@ export const blogPosts = [
         content: 'blog/ai-assisted-development/content.md'
     },
     {
+        id: 'everything-claude-code',
+        title: 'Everything Claude Code',
+        excerpt: 'Claude Code 完全指南 - 探索 Anthropic 官方 CLI 工具的强大功能。',
+        date: '2025-12-09',
+        tags: ['Claude', 'AI', '工具'],
+        image: 'https://picsum.photos/seed/claude-code/600/320.jpg',
+        content: 'blog/everything-claude-code/content.md'
+    },
+    {
         id: 'react-version-history',
         title: 'React 版本历史和特性',
         excerpt: '深入探讨 React 的核心概念：组件、JSX、Props、State、虚拟 DOM 等。',
@@ -67,19 +67,19 @@ export const blogPosts = [
         id: 'css-selector-priority-cascade-inheritance',
         title: 'CSS选择器优先级、层叠、继承',
         excerpt: '深入理解 CSS 的核心概念：选择器优先级、层叠规则和继承机制。',
-        date: '2024-02-12',
+        date: '2022-06-12',
         tags: ['CSS', '前端'],
         image: 'https://picsum.photos/seed/new-article/600/320.jpg',
         content: 'blog/css-selector-priority-cascade-inheritance/content.md'
     },
     {
-        id: 'everything-claude-code',
-        title: 'Everything Claude Code',
-        excerpt: 'Claude Code 完全指南 - 探索 Anthropic 官方 CLI 工具的强大功能。',
-        date: '2024-02-09',
-        tags: ['Claude', 'AI', '工具'],
-        image: 'https://picsum.photos/seed/claude-code/600/320.jpg',
-        content: 'blog/everything-claude-code/content.md'
+        id: 'hash-vs-history-routing',
+        title: 'Hash 路由和 History 路由',
+        excerpt: '深入对比前端两种路由模式：Hash 路由和 History 路由的原理、实现、优缺点、服务端配置以及在不同框架中的使用方式。',
+        date: '2022-03-24',
+        tags: ['前端', '路由', 'SPA'],
+        image: 'https://picsum.photos/seed/hash-history-routing/600/320.jpg',
+        content: 'blog/hash-vs-history-routing/content.md'
     },
     // {
     //     id: 'ts-core',
