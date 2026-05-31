@@ -1,6 +1,8 @@
 import { blogPosts } from './blog-posts.js';
 import { projects } from '../projects/projects.js';
 import { experiences } from './experience.js';
+import { micromark } from 'https://esm.sh/micromark@4.0.2';
+import { gfm, gfmHtml } from 'https://esm.sh/micromark-extension-gfm@3.0.0';
 
 // 加载经历时间线
 function loadExperience() {
@@ -132,45 +134,42 @@ async function showBlogDetail(postId) {
 
         // 初始化目录滚动监听
         initTocScrollSpy(toc);
+
+        // 初始化目录按钮
+        initTocButtons();
     } catch (error) {
         console.error('加载博客文章出错:', error);
         blogArticle.innerHTML = getPlaceholderContent(post);
     }
 }
 
-// 使用 marked.js 解析 Markdown
+// 使用 micromark 解析 Markdown
 function parseMarkdown(markdown) {
-    // 配置 marked
-    marked.setOptions({
-        breaks: true, // 允许换行
-        gfm: true    // GitHub 风格 Markdown
+    // 1. 解析为 HTML（GFM + 原始 HTML 支持）
+    let html = micromark(markdown, {
+        allowDangerousHtml: true,
+        extensions: [gfm()],
+        htmlExtensions: [gfmHtml()]
     });
 
-    // 自定义渲染器：为标题添加 id 和 class
-    const renderer = new marked.Renderer();
-
-    // 标题 - 添加 id 用于目录跳转
+    // 2. 后处理：为标题添加 id 和 class（用于目录跳转）
     let headingIndex = 0;
-    renderer.heading = function({ text, depth }) {
-        const id = `heading-${headingIndex++}`;
-        return `<h${depth} id="${id}" class="article-heading">${text}</h${depth}>`;
-    };
+    html = html.replace(
+        /<h([1-6])>(.*?)<\/h\1>/gi,
+        (match, level, text) => {
+            const id = `heading-${headingIndex++}`;
+            return `<h${level} id="${id}" class="article-heading">${text}</h${level}>`;
+        }
+    );
 
-    // 链接 - 新窗口打开
-    renderer.link = function({ href, title, text }) {
-        return `<a href="${href}" target="_blank" style="color: #3b86ef;"${title ? ` title="${title}"` : ''}>${text}</a>`;
-    };
-
-    // 代码块 - 添加语言 class
-    renderer.code = function({ text, lang }) {
-        const language = lang || '';
-        return `<pre><code class="language-${language}">${text}</code></pre>`;
-    };
-
-    marked.use({ renderer });
-
-    // 解析 Markdown
-    let html = marked.parse(markdown);
+    // 3. 后处理：链接新窗口打开
+    html = html.replace(
+        /<a\b([^>]*)>/gi,
+        (match, attrs) => {
+            if (/target\s*=/i.test(attrs)) return match;
+            return `<a${attrs} target="_blank" style="color: #3b86ef;">`;
+        }
+    );
 
     return html;
 }
@@ -198,7 +197,15 @@ function generateTocHtml(toc) {
 
     return `
         <nav class="article-toc">
-            <h4 class="toc-title">目录</h4>
+            <div class="toc-header">
+                <button class="toc-btn toc-toggle-btn" title="展开/收起目录" aria-label="展开或收起目录">
+                    <span class="toc-toggle-text">目录</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <button class="toc-btn toc-scroll-top-btn" title="滚动到顶部" aria-label="滚动到页面顶部">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="4"/><polyline points="6 10 12 4 18 10"/></svg>
+                </button>
+            </div>
             <ul class="toc-list">
                 ${toc.map(item => `
                     <li class="toc-item toc-level-${item.level}">
@@ -254,6 +261,32 @@ function initTocScrollSpy(toc) {
 
     window.addEventListener('scroll', updateActiveLink);
     updateActiveLink(); // 初始化
+}
+
+// 初始化目录按钮（展开/收起 + 滚动到顶部）
+function initTocButtons() {
+    const toggleBtn = document.querySelector('.toc-toggle-btn');
+    const scrollTopBtn = document.querySelector('.toc-scroll-top-btn');
+    const tocList = document.querySelector('.toc-list');
+
+    // 展开/收起目录
+    if (toggleBtn && tocList) {
+        const tocHeader = document.querySelector('.toc-header');
+
+        toggleBtn.addEventListener('click', () => {
+            const isCollapsed = tocList.style.display === 'none';
+            tocList.style.display = isCollapsed ? '' : 'none';
+            if (tocHeader) tocHeader.classList.toggle('toc-collapsed', !isCollapsed);
+            toggleBtn.classList.toggle('collapsed', !isCollapsed);
+        });
+    }
+
+    // 滚动到顶部
+    if (scrollTopBtn) {
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 }
 
 // 修复图片路径 - 添加文章文件夹的相对路径
