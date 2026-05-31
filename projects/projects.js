@@ -1,6 +1,15 @@
 // 项目数据配置
 export const projects = [
-    {                                                                                       
+    {
+        id: 'qmt-live-assistant',
+        title: 'QMT Live Assistant',
+        description: '基于 Python FastAPI + 原生 HTML 前端的 miniQMT 量化交易助手，支持多策略管理、远程信号接收、实时行情刷新、Token 认证、亮暗主题切换，设计风格参考 Coinbase。',
+        image: 'https://picsum.photos/seed/qmt-live/400/200.jpg',
+        tech: ['Python', 'FastAPI', 'uvicorn', 'xtquant', 'HTML/CSS', 'JavaScript ES Module'],
+        demoUrl: '',
+        githubUrl: 'https://github.com/Dada-liu/QMT-Live-Assistant'
+    },
+    {
       id: 'resume-generator',                                                           
       title: '简历编辑器',                                                                
       description: '使用 React 19、TypeScript 和 Tailwind CSS 构建的在线简历编辑工具，支持实时预览、PDF 导出和数据持久化。',                          

@@ -72,7 +72,7 @@ function loadBlogList() {
     blogList.querySelectorAll('.blog-card').forEach(card => {
         card.addEventListener('click', () => {
             const postId = card.dataset.postId;
-            showBlogDetail(postId);
+            window.location.hash = '#blog/' + postId;
         });
     });
 }
@@ -128,9 +128,6 @@ async function showBlogDetail(postId) {
                 ${tocHtml ? `<aside class="blog-article-sidebar">${tocHtml}</aside>` : ''}
             </div>
         `;
-
-        // 切换到详情页
-        switchSection('blog-detail');
 
         // 初始化目录滚动监听
         initTocScrollSpy(toc);
@@ -319,6 +316,21 @@ function getPlaceholderContent(post) {
     `;
 }
 
+// 路由处理 — 统一导航入口
+function handleRoute() {
+    const hash = window.location.hash.substring(1);
+
+    if (!hash || hash === 'about') {
+        switchSection('about');
+    } else if (hash === 'skills' || hash === 'projects' || hash === 'blog') {
+        switchSection(hash);
+    } else if (hash.startsWith('blog/')) {
+        const postId = hash.substring(5);
+        switchSection('blog-detail');
+        showBlogDetail(postId);
+    }
+}
+
 // 切换 section
 function switchSection(targetId) {
     const contentSections = document.querySelectorAll('.content-section');
@@ -406,31 +418,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const backToBlogBtn = document.getElementById('backToBlog');
     if (backToBlogBtn) {
         backToBlogBtn.addEventListener('click', () => {
-            switchSection('blog');
+            window.location.hash = '#blog';
         });
-    }
-
-    function showSection(targetId) {
-        switchSection(targetId);
     }
 
     // Add click event listeners to navigation links
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            showSection(targetId);
+            window.location.hash = this.getAttribute('href');
         });
     });
 
-    // Handle direct URL navigation (if someone lands on a specific section)
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-        showSection(hash);
-    } else {
-        // Show about section by default
-        showSection('about');
-    }
+    // 路由处理
+    window.addEventListener('hashchange', handleRoute);
+    handleRoute();
 
     // WeChat popup functionality
     const wechatLink = document.querySelector('.wechat-link');
