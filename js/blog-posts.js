@@ -29,11 +29,11 @@ export const blogPosts = [
     },
     {
         id: 'claude-code-advanced',
-        title: '使用 ClaudeCode 开发第二弹：进阶技巧与最佳实践',
+        title: '使用 ClaudeCode 开发第二弹：进阶技巧与国内最佳大模型',
         excerpt: '继上一弹之后，我总结了 Plan Mode、MCP、Hooks、多 Agent 协作等进阶技巧，让 Claude Code 的日常开发效率再上一个台阶。',
         date: '2026-05-18',
         tags: ['AI', 'ClaudeCode', '效率'],
-        image: 'blog/claude-code-advanced/assets/1779110077660.png',
+        image: 'blog/claude-code-advanced/assets/文章首页图.png',
         content: 'blog/claude-code-advanced/content.md'
     },
     {
@@ -66,7 +66,7 @@ export const blogPosts = [
     {
         id: 'ai-assisted-development',
         title: '一张图 → 完整应用：我用 ClaudeCode 复刻了这个开发流程',
-        excerpt: '不再一行行敲代码。记录我用 ClaudeCode 把一张截图变成完整应用的每一步。',
+        excerpt: '不再一行行敲代码。记录我用 ClaudeCode 把一张截图变成完整 Web 应用的每一步。',
         date: '2026-04-19',
         tags: ['AI', 'ClaudeCode'],
         image: 'blog/ai-assisted-development/assets/1776222397194.png',

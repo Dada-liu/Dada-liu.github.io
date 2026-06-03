@@ -47,3 +47,6 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 类型推断（Type Inference）让TypeScript能够自动推断变量的类型。
 类型推断（Type Inference）让TypeScript能够自动推断变量的类型。
 交叉类型（Intersection Types）可以将多个类型合并为一个类型。
+模块（Modules）可以帮助我们组织代码，并支持代码的复用。
+命名空间（Namespaces）用于组织代码，避免命名冲突。
+TypeScript的类型系统可以帮助我们在编译时捕获错误。
