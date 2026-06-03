@@ -129,6 +129,9 @@ async function showBlogDetail(postId) {
             </div>
         `;
 
+        // 初始化代码块展开/收起
+        initCodeBlockToggle();
+
         // 初始化目录滚动监听
         initTocScrollSpy(toc);
 
@@ -284,6 +287,48 @@ function initTocButtons() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
+}
+
+// 初始化代码块展开/收起功能
+function initCodeBlockToggle() {
+    const preElements = document.querySelectorAll('.blog-article-content pre');
+
+    preElements.forEach(pre => {
+        const lines = pre.textContent.split('\n').filter(line => line.trim() !== '').length;
+
+        if (lines === 0 || lines <= 10) return;
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-block-wrapper';
+
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+
+        pre.classList.add('code-block-collapsed');
+
+        const button = document.createElement('button');
+        button.className = 'code-block-toggle';
+        button.textContent = '展开';
+        wrapper.insertBefore(button, wrapper.firstChild);
+
+        button.addEventListener('click', () => {
+            const isCollapsed = pre.classList.toggle('code-block-collapsed');
+
+            if (isCollapsed) {
+                button.textContent = '展开';
+                pre.style.maxHeight = '';
+            } else {
+                button.textContent = '收起';
+                pre.style.maxHeight = pre.scrollHeight + 'px';
+
+                const onTransitionEnd = () => {
+                    pre.style.maxHeight = '';
+                    pre.removeEventListener('transitionend', onTransitionEnd);
+                };
+                pre.addEventListener('transitionend', onTransitionEnd);
+            }
+        });
+    });
 }
 
 // 修复图片路径 - 添加文章文件夹的相对路径
