@@ -1,23 +1,23 @@
 // 博客文章配置
 export const blogPosts = [
-    {
-        id: 'jq-send-signal-to-qmt',
-        title: '在聚宽发送信号给 QMT-Live-Assistant',
-        excerpt: '实战教程：从聚宽导出策略代码，部署到云服务器，通过 HTTP 信号连接到 QMT-Live-Assistant 实现自动化实盘交易。包含完整的信号发送模块和均线策略示例代码。',
-        date: '2026-05-31',
-        tags: ['量化交易', 'QMT', '聚宽', 'Python'],
-        image: 'https://picsum.photos/seed/jq-qmt-signal/600/320.jpg',
-        content: 'blog/jq-send-signal-to-qmt/content.md'
-    },
-    {
-        id: 'qmt-live-assistant-usage',
-        title: 'QMT-Live-Assistant 使用指南',
-        excerpt: '从安装部署到日常使用，全面介绍 QMT-Live-Assistant 的操作流程：启动服务器、创建策略、发送远程信号、监控交易、代码转换以及常见问题排查。',
-        date: '2026-05-31',
-        tags: ['量化交易', 'QMT', 'Python', '使用指南'],
-        image: 'https://picsum.photos/seed/qmt-usage/600/320.jpg',
-        content: 'blog/qmt-live-assistant-usage/content.md'
-    },
+    // {
+    //     id: 'jq-send-signal-to-qmt',
+    //     title: '在聚宽发送信号给 QMT-Live-Assistant',
+    //     excerpt: '实战教程：从聚宽导出策略代码，部署到云服务器，通过 HTTP 信号连接到 QMT-Live-Assistant 实现自动化实盘交易。包含完整的信号发送模块和均线策略示例代码。',
+    //     date: '2026-05-31',
+    //     tags: ['量化交易', 'QMT', '聚宽', 'Python'],
+    //     image: 'https://picsum.photos/seed/jq-qmt-signal/600/320.jpg',
+    //     content: 'blog/jq-send-signal-to-qmt/content.md'
+    // },
+    // {
+    //     id: 'qmt-live-assistant-usage',
+    //     title: 'QMT-Live-Assistant 使用指南',
+    //     excerpt: '从安装部署到日常使用，全面介绍 QMT-Live-Assistant 的操作流程：启动服务器、创建策略、发送远程信号、监控交易、代码转换以及常见问题排查。',
+    //     date: '2026-05-31',
+    //     tags: ['量化交易', 'QMT', 'Python', '使用指南'],
+    //     image: 'https://picsum.photos/seed/qmt-usage/600/320.jpg',
+    //     content: 'blog/qmt-live-assistant-usage/content.md'
+    // },
     {
         id: 'qmt-live-assistant',
         title: '基于 QMT 的实盘工具',

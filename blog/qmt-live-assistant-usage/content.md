@@ -9,7 +9,7 @@ QMT-Live-Assistant 适用于以下量化交易工作流：
 
 
 
-## 2、安装
+## 2、安装 QMT-Live-Assistant
 
 ### 前提条件
 
@@ -31,14 +31,24 @@ pip install -r requirements.txt
 
 ## 3、启动服务器
 
+1、windows 下启动CMD，进入项目根目录，执行如下启动命令
 ```bash
 python -m backend.main --port 8000
 ```
 
-浏览器打开 `http://localhost:8000`：
+2、浏览器打开 `http://localhost:8000`
 
-1. 在配置页面填写账户 ID（券商资金账号）和 QMT 路径
-2. QMT 路径示例：`C:\国金QMT交易端模拟\userdata_mini`
+3、点击“前往配置“
+
+4、在配置页面填写账户 ID（券商资金账号）和 QMT 路径
+
+5、查看账户资金状况
+
+6、配置
+
+7、查看
+
+2. QMT 路径示例：`D:\gjQMT\userdata_mini`
 3. 点击「启动服务器」
 
 连接成功后，页面会显示服务器状态和 Token。
