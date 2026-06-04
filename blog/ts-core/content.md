@@ -51,3 +51,4 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 命名空间（Namespaces）用于组织代码，避免命名冲突。
 TypeScript的类型系统可以帮助我们在编译时捕获错误。
 类型守卫（Type Guards）允许我们在运行时检查类型。
+映射类型（Mapped Types）允许我们基于旧类型创建新类型。
