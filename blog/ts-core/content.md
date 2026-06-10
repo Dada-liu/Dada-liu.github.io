@@ -52,3 +52,7 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 TypeScript的类型系统可以帮助我们在编译时捕获错误。
 类型守卫（Type Guards）允许我们在运行时检查类型。
 映射类型（Mapped Types）允许我们基于旧类型创建新类型。
+TypeScript的类型系统可以帮助我们在编译时捕获错误。
+可选属性（Optional Properties）允许我们定义一些可选的属性。
+泛型（Generics）允许我们创建可重用的组件，同时保持类型安全。
+TypeScript的类型系统可以帮助我们在编译时捕获错误。
