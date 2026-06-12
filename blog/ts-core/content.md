@@ -56,3 +56,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 可选属性（Optional Properties）允许我们定义一些可选的属性。
 泛型（Generics）允许我们创建可重用的组件，同时保持类型安全。
 TypeScript的类型系统可以帮助我们在编译时捕获错误。
+TypeScript的类型系统可以帮助我们在编译时捕获错误。
+TypeScript的类型系统可以帮助我们在编译时捕获错误。
