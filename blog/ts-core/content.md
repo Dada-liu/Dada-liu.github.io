@@ -58,3 +58,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 TypeScript的类型系统可以帮助我们在编译时捕获错误。
 TypeScript的类型系统可以帮助我们在编译时捕获错误。
 TypeScript的类型系统可以帮助我们在编译时捕获错误。
+装饰器（Decorators）是一种特殊类型的声明，可以附加到类、方法、属性或参数上。
+工具类型（Utility Types）是TypeScript内置的一些常用类型转换工具。
