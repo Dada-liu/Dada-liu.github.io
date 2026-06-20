@@ -60,3 +60,13 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 TypeScript的类型系统可以帮助我们在编译时捕获错误。
 装饰器（Decorators）是一种特殊类型的声明，可以附加到类、方法、属性或参数上。
 工具类型（Utility Types）是TypeScript内置的一些常用类型转换工具。
+类型推断（Type Inference）让TypeScript能够自动推断变量的类型。
+联合类型（Union Types）表示一个值可以是几种类型之一。
+命名空间（Namespaces）用于组织代码，避免命名冲突。
+条件类型（Conditional Types）允许我们根据条件选择不同的类型。
+条件类型（Conditional Types）允许我们根据条件选择不同的类型。
+交叉类型（Intersection Types）可以将多个类型合并为一个类型。
+联合类型（Union Types）表示一个值可以是几种类型之一。
+映射类型（Mapped Types）允许我们基于旧类型创建新类型。
+映射类型（Mapped Types）允许我们基于旧类型创建新类型。
+模块（Modules）可以帮助我们组织代码，并支持代码的复用。
