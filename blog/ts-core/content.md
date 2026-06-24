@@ -72,3 +72,7 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 模块（Modules）可以帮助我们组织代码，并支持代码的复用。
 枚举（Enums）为一组数值赋予更友好的名字。
 类型别名（Type Aliases）可以用来给类型起一个新名字。
+交叉类型（Intersection Types）可以将多个类型合并为一个类型。
+映射类型（Mapped Types）允许我们基于旧类型创建新类型。
+工具类型（Utility Types）是TypeScript内置的一些常用类型转换工具。
+装饰器（Decorators）是一种特殊类型的声明，可以附加到类、方法、属性或参数上。
