@@ -76,3 +76,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 映射类型（Mapped Types）允许我们基于旧类型创建新类型。
 工具类型（Utility Types）是TypeScript内置的一些常用类型转换工具。
 装饰器（Decorators）是一种特殊类型的声明，可以附加到类、方法、属性或参数上。
+装饰器（Decorators）是一种特殊类型的声明，可以附加到类、方法、属性或参数上。
+类型推断（Type Inference）让TypeScript能够自动推断变量的类型。
