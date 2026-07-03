@@ -80,3 +80,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 类型推断（Type Inference）让TypeScript能够自动推断变量的类型。
 命名空间（Namespaces）用于组织代码，避免命名冲突。
 工具类型（Utility Types）是TypeScript内置的一些常用类型转换工具。
+命名空间（Namespaces）用于组织代码，避免命名冲突。
+只读属性（Readonly Properties）确保某些属性只能在创建时被赋值。
