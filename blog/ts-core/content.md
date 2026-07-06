@@ -84,3 +84,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 只读属性（Readonly Properties）确保某些属性只能在创建时被赋值。
 只读属性（Readonly Properties）确保某些属性只能在创建时被赋值。
 接口（Interface）是TypeScript的核心概念之一，用于定义对象的形状。
+工具类型（Utility Types）是TypeScript内置的一些常用类型转换工具。
+联合类型（Union Types）表示一个值可以是几种类型之一。
