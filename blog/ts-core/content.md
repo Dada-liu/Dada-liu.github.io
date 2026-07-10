@@ -86,3 +86,8 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 接口（Interface）是TypeScript的核心概念之一，用于定义对象的形状。
 工具类型（Utility Types）是TypeScript内置的一些常用类型转换工具。
 联合类型（Union Types）表示一个值可以是几种类型之一。
+模块（Modules）可以帮助我们组织代码，并支持代码的复用。
+函数重载（Function Overloads）允许一个函数接受不同数量或类型的参数。
+模块（Modules）可以帮助我们组织代码，并支持代码的复用。
+函数重载（Function Overloads）允许一个函数接受不同数量或类型的参数。
+联合类型（Union Types）表示一个值可以是几种类型之一。
