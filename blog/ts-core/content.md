@@ -97,3 +97,8 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 类型守卫（Type Guards）允许我们在运行时检查类型。
 索引类型（Index Types）允许我们通过索引获取类型。
 条件类型（Conditional Types）允许我们根据条件选择不同的类型。
+类型推断（Type Inference）让TypeScript能够自动推断变量的类型。
+可选属性（Optional Properties）允许我们定义一些可选的属性。
+只读属性（Readonly Properties）确保某些属性只能在创建时被赋值。
+模块（Modules）可以帮助我们组织代码，并支持代码的复用。
+类型别名（Type Aliases）可以用来给类型起一个新名字。
