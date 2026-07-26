@@ -106,3 +106,4 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 函数重载（Function Overloads）允许一个函数接受不同数量或类型的参数。
 TypeScript的类型系统可以帮助我们在编译时捕获错误。
 索引类型（Index Types）允许我们通过索引获取类型。
+泛型（Generics）允许我们创建可重用的组件，同时保持类型安全。
