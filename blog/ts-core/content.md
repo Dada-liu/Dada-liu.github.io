@@ -109,3 +109,4 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 泛型（Generics）允许我们创建可重用的组件，同时保持类型安全。
 枚举（Enums）为一组数值赋予更友好的名字。
 类型推断（Type Inference）让TypeScript能够自动推断变量的类型。
+类型断言（Type Assertions）允许我们手动指定值的类型。
