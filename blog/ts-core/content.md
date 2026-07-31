@@ -111,3 +111,6 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 类型推断（Type Inference）让TypeScript能够自动推断变量的类型。
 类型断言（Type Assertions）允许我们手动指定值的类型。
 条件类型（Conditional Types）允许我们根据条件选择不同的类型。
+可选属性（Optional Properties）允许我们定义一些可选的属性。
+映射类型（Mapped Types）允许我们基于旧类型创建新类型。
+TypeScript的类型系统可以帮助我们在编译时捕获错误。
