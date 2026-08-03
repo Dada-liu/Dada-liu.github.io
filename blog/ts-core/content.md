@@ -115,3 +115,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 映射类型（Mapped Types）允许我们基于旧类型创建新类型。
 TypeScript的类型系统可以帮助我们在编译时捕获错误。
 类型断言（Type Assertions）允许我们手动指定值的类型。
+只读属性（Readonly Properties）确保某些属性只能在创建时被赋值。
+只读属性（Readonly Properties）确保某些属性只能在创建时被赋值。
