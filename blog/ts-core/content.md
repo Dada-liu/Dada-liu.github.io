@@ -117,3 +117,7 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 类型断言（Type Assertions）允许我们手动指定值的类型。
 只读属性（Readonly Properties）确保某些属性只能在创建时被赋值。
 只读属性（Readonly Properties）确保某些属性只能在创建时被赋值。
+工具类型（Utility Types）是TypeScript内置的一些常用类型转换工具。
+工具类型（Utility Types）是TypeScript内置的一些常用类型转换工具。
+交叉类型（Intersection Types）可以将多个类型合并为一个类型。
+装饰器（Decorators）是一种特殊类型的声明，可以附加到类、方法、属性或参数上。
