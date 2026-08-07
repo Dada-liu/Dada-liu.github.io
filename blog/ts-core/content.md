@@ -121,3 +121,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 工具类型（Utility Types）是TypeScript内置的一些常用类型转换工具。
 交叉类型（Intersection Types）可以将多个类型合并为一个类型。
 装饰器（Decorators）是一种特殊类型的声明，可以附加到类、方法、属性或参数上。
+泛型（Generics）允许我们创建可重用的组件，同时保持类型安全。
+类型守卫（Type Guards）允许我们在运行时检查类型。
