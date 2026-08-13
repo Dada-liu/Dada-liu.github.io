@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人网站</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script type="module" src="./js/script.js"></script>
 </head>
-<body>
+<body class="intro">
     <div class="app-container">
         <!-- 移动端顶部导航 -->
         <nav class="mobile-nav">
@@ -20,6 +23,7 @@
             </ul>
         </nav>
         <button class="sidebar-toggle" id="sidebarToggle" title="收起侧边栏">☰</button>
+        <button class="sidebar-toggle sidebar-toggle-right expanded" id="sidebarToggleRight" title="收起侧边栏">✕</button>
         <aside class="sidebar">
             <div class="profile-section">
                 <div class="avatar">
@@ -28,32 +32,6 @@
                 <h1 class="name">Liu Yu</h1>
                 <p class="title">前端开发工程师</p>
                 <p class="location">📍 Beijing, China</p>
-                
-                <div class="social-links">
-                    <a href="mailto:hotpotliu@163.com" class="social-link" target="_blank">✉️</a>
-                    <a href="https://github.com/Dada-liu" class="social-link" target="_blank"><img src="./github-logo.png" alt="GitHub" class="social-icon"></a>
-                    <div class="wechat-container">
-                        <a href="#" class="social-link wechat-link" target="_blank"><img src="./wechat-logo.svg" alt="WeChat" class="social-icon"></a>
-                        <div class="wechat-popup">
-                            <div class="wechat-popup-content">
-                                <img src="./wechat-qrcode.webp" alt="WeChat QR Code" class="wechat-qrcode">
-                                <div class="wechat-info">
-                                    <p class="wechat-id">微信号：hotpotdaxia</p>
-                                    <p class="wechat-tip">扫码添加微信</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="social-links social-links-secondary">
-                    <a href="https://juejin.cn/user/4187412310262702" class="social-link" target="_blank" title="掘金">
-                        <img src="./juejin-logo.svg" alt="掘金" class="social-icon"></a>
-                    </a>
-                    <a href="https://blog.csdn.net/txt666999999" class="social-link" target="_blank" title="CSDN">
-                        <img src="https://g.csdnimg.cn/static/logo/favicon32.ico" alt="CSDN" class="social-icon"></a>
-                        <!-- <img src="./csdn-logo.png" alt="CSDN" class="social-icon"></a> -->
-                    </a>
-                </div>
             </div>
 
             <nav class="nav-section">
@@ -67,7 +45,16 @@
         </aside>
 
         <main class="main-content">
-            <section id="about" class="content-section active">
+            <div class="page-sections" id="pageSections">
+            <!-- Hero 首屏 -->
+            <section class="hero" id="home">
+                <p class="hero-greeting">你好，我是</p>
+                <h1 class="hero-name">Liu Yu</h1>
+                <p class="hero-tagline">前端开发工程师 · Vibe Coding 爱好者</p>
+                <p class="hero-desc">热衷于将复杂的问题转化为简单、优雅的解决方案。专注于前端工程、AI 辅助开发与量化交易工具。</p>
+            </section>
+
+            <section id="about" class="content-section">
                 <div class="section-header">
                     <h2>关于我</h2>
                 </div>
@@ -168,14 +155,6 @@
                 </div>
             </section>
 
-            <section id="blog-detail" class="content-section">
-                <button class="back-button" id="backToBlog">← 返回博客</button>
-                <article class="blog-article" id="blogArticle">
-                    <!-- 文章详情将通过 JS 动态加载 -->
-                </article>
-            </section>
-
-
             <section id="contact" class="content-section">
                 <div class="section-header">
                     <h2>联系我</h2>
@@ -183,23 +162,102 @@
                 </div>
                 <div class="contact-content">
                     <p>我始终对新项目和机会感兴趣。无论您有疑问还是只是想打个招呼，请随时联系我！</p>
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <h4>邮箱</h4>
-                            <a href="mailto:your.email@example.com">your.email@example.com</a>
+                    <div class="social-links contact-social">
+                        <a href="mailto:hotpotliu@163.com" class="social-link" target="_blank" title="邮箱">✉️</a>
+                        <a href="https://github.com/Dada-liu" class="social-link" target="_blank" title="GitHub"><img src="./github-logo.png" alt="GitHub" class="social-icon"></a>
+                        <div class="wechat-container">
+                            <a href="#" class="social-link wechat-link" target="_blank" title="微信"><img src="./wechat-logo.svg" alt="WeChat" class="social-icon"></a>
+                            <div class="wechat-popup">
+                                <div class="wechat-popup-content">
+                                    <img src="./wechat-qrcode.webp" alt="WeChat QR Code" class="wechat-qrcode">
+                                    <div class="wechat-info">
+                                        <p class="wechat-id">微信号：hotpotdaxia</p>
+                                        <p class="wechat-tip">扫码添加微信</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="contact-method">
-                            <h4>GitHub</h4>
-                            <a href="https://github.com/yourusername">github.com/yourusername</a>
-                        </div>
-                        <div class="contact-method">
-                            <h4>领英</h4>
-                            <a href="https://linkedin.com/in/yourusername">linkedin.com/in/yourusername</a>
-                        </div>
+                        <a href="https://juejin.cn/user/4187412310262702" class="social-link" target="_blank" title="掘金">
+                            <img src="./juejin-logo.svg" alt="掘金" class="social-icon"></a>
+                        </a>
+                        <a href="https://blog.csdn.net/txt666999999" class="social-link" target="_blank" title="CSDN">
+                            <img src="https://g.csdnimg.cn/static/logo/favicon32.ico" alt="CSDN" class="social-icon"></a>
+                            <!-- <img src="./csdn-logo.png" alt="CSDN" class="social-icon"></a> -->
+                        </a>
                     </div>
                 </div>
             </section>
+
+            <footer class="site-footer">
+                <p>© 2026 Liu Yu · 用 ☕ 和 Claude Code 构建</p>
+            </footer>
+            </div>
+
+            <!-- 博客详情独立视图（默认隐藏，通过 #blog/:id 路由打开） -->
+            <section id="blog-detail" class="content-section blog-detail-view">
+                <button class="back-button" id="backToBlog">← 返回博客</button>
+                <article class="blog-article" id="blogArticle">
+                    <!-- 文章详情将通过 JS 动态加载 -->
+                </article>
+            </section>
         </main>
     </div>
+    <script>
+    // 首次进入动画：只展示 hero → 1s 后显示并滚动居中到「联系我」→ 3s 后左边栏渐显 → 4s 后展示全部并滚动到「关于我」
+    (function () {
+        // 带 hash 的直达链接（如 #blog/xxx）、或后台打开的标签页，跳过动画
+        if (window.location.hash || document.hidden) {
+            document.body.classList.remove('intro');
+            return;
+        }
+
+        // 手动实现定时长度的平滑滚动（CSS smooth 无法控制时长）
+        function smoothScrollTo(target, duration) {
+            var start = window.scrollY;
+            var change = target - start;
+            var startTime = null;
+            function step(ts) {
+                if (!startTime) startTime = ts;
+                var p = Math.min((ts - startTime) / duration, 1);
+                var ease = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+                window.scrollTo({ top: start + change * ease, behavior: 'instant' });
+                if (p < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+
+        setTimeout(function () {
+            document.body.classList.add('intro-show-contact');
+            var contact = document.getElementById('contact');
+            if (contact) {
+                var top = contact.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.2;
+                window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+            }
+        }, 1000);
+        // 3s 后左边栏 1s 渐显
+        setTimeout(function () {
+            document.body.classList.add('intro-show-sidebar');
+        }, 2000);
+        // 再 1s 后显示所有区块，保持「联系我」位置不动，然后 1s 滚动到「关于我」（距顶部 10%）
+        setTimeout(function () {
+            var contact = document.getElementById('contact');
+            var about = document.getElementById('about');
+            var contactTop = contact ? contact.getBoundingClientRect().top : 0;
+
+            document.body.classList.remove('intro', 'intro-show-contact', 'intro-show-sidebar');
+
+            // 区块全部显示会把「联系我」向下推，补偿滚动使其在视口中保持不动
+            if (contact) {
+                var delta = contact.getBoundingClientRect().top - contactTop;
+                window.scrollTo({ top: window.scrollY + delta, behavior: 'instant' });
+            }
+
+            if (about) {
+                var target = about.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.1;
+                smoothScrollTo(Math.max(target, 0), 1000);
+            }
+        }, 3000);
+    })();
+    </script>
 </body>
 </html>

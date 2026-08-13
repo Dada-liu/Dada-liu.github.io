@@ -365,53 +365,78 @@ function getPlaceholderContent(post) {
 function handleRoute() {
     const hash = window.location.hash.substring(1);
 
-    if (!hash || hash === 'about') {
-        switchSection('about');
-    } else if (hash === 'skills' || hash === 'projects' || hash === 'blog') {
-        switchSection(hash);
-    } else if (hash.startsWith('blog/')) {
+    if (hash.startsWith('blog/')) {
         const postId = hash.substring(5);
-        switchSection('blog-detail');
+        showBlogDetailView();
         showBlogDetail(postId);
+        return;
+    }
+
+    showMainView();
+
+    if (hash) {
+        const target = document.getElementById(hash);
+        if (target && target.classList.contains('content-section')) {
+            target.scrollIntoView({ behavior: 'smooth' });
+            setActiveNav(hash);
+        }
+    } else {
+        window.scrollTo({ top: 0 });
+        setActiveNav(null);
     }
 }
 
-// 切换 section
-function switchSection(targetId) {
-    const contentSections = document.querySelectorAll('.content-section');
-    const desktopNavLinks = document.querySelectorAll('.nav-link');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+// 显示主页（滚动单页）
+function showMainView() {
+    document.getElementById('pageSections').classList.remove('hidden');
+    document.getElementById('blog-detail').classList.remove('active');
+}
 
-    contentSections.forEach(section => {
-        section.classList.remove('active');
-    });
+// 显示博客详情视图
+function showBlogDetailView() {
+    document.getElementById('pageSections').classList.add('hidden');
+    document.getElementById('blog-detail').classList.add('active');
+    window.scrollTo({ top: 0 });
+    setActiveNav('blog');
+}
 
-    desktopNavLinks.forEach(link => {
-        link.classList.remove('active');
+// 更新导航高亮
+function setActiveNav(sectionId) {
+    document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${sectionId}`);
     });
-    mobileNavLinks.forEach(link => {
-        link.classList.remove('active');
-    });
+}
 
-    const targetSection = document.getElementById(targetId);
-    if (targetSection) {
-        targetSection.classList.add('active');
+// 滚动监听 — 高亮当前可见区块对应的导航项
+function initScrollSpy() {
+    const sectionIds = ['about', 'skills', 'projects', 'blog', 'contact'];
+    let scheduled = false;
+
+    function update() {
+        // 博客详情视图下不跟随滚动
+        if (document.getElementById('pageSections').classList.contains('hidden')) return;
+
+        const scrollY = window.scrollY + 160;
+        let current = null;
+
+        sectionIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el && el.offsetTop <= scrollY) {
+                current = id;
+            }
+        });
+
+        setActiveNav(current);
+        scheduled = false;
     }
 
-    // 桌面端导航
-    const desktopActiveLink = document.querySelector(`.nav-link[href="#${targetId}"]`);
-    if (desktopActiveLink) {
-        desktopActiveLink.classList.add('active');
-    }
+    window.addEventListener('scroll', () => {
+        if (scheduled) return;
+        scheduled = true;
+        setTimeout(update, 100);
+    }, { passive: true });
 
-    // 移动端导航
-    const mobileActiveLink = document.querySelector(`.mobile-nav-link[href="#${targetId}"]`);
-    if (mobileActiveLink) {
-        mobileActiveLink.classList.add('active');
-    }
-
-    // 滚动到顶部
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    update();
 }
 
 // Navigation functionality
@@ -429,17 +454,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const mainContent = document.querySelector('.main-content');
 
     if (sidebarToggle && sidebar) {
+        const toggles = [sidebarToggle, document.getElementById('sidebarToggleRight')].filter(Boolean);
+
         // 默认展开状态
         let isExpanded = true;
-        sidebarToggle.textContent = '✕';
-        sidebarToggle.title = '收起侧边栏';
+        toggles.forEach(btn => {
+            btn.textContent = '✕';
+            btn.title = '收起侧边栏';
+            btn.classList.add('expanded');
+        });
 
-        sidebarToggle.addEventListener('click', () => {
+        toggles.forEach(btn => btn.addEventListener('click', () => {
             isExpanded = !isExpanded;
             sidebar.classList.toggle('collapsed', !isExpanded);
-            sidebarToggle.textContent = isExpanded ? '✕' : '☰';
-            sidebarToggle.title = isExpanded ? '收起侧边栏' : '展开侧边栏';
-        });
+            toggles.forEach(b => {
+                b.textContent = isExpanded ? '✕' : '☰';
+                b.title = isExpanded ? '收起侧边栏' : '展开侧边栏';
+                b.classList.toggle('expanded', isExpanded);
+            });
+        }));
     }
 
     // 关于我页面 Tab 切换
@@ -479,6 +512,9 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('hashchange', handleRoute);
     handleRoute();
 
+    // 滚动监听导航高亮
+    initScrollSpy();
+
     // WeChat popup functionality
     const wechatLink = document.querySelector('.wechat-link');
     if (wechatLink) {
@@ -504,7 +540,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, observerOptions);
 
     // Observe project cards and timeline items for animations
-    document.querySelectorAll('.project-card, .timeline-item, .contact-method').forEach(item => {
+    document.querySelectorAll('.project-card, .timeline-item').forEach(item => {
         item.style.opacity = '0';
         item.style.transform = 'translateY(20px)';
         item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
