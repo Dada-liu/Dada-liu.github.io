@@ -19,6 +19,15 @@ export const blogPosts = [
     //     content: 'blog/qmt-live-assistant-usage/content.md'
     // },
     {
+        id: 'kimi-cli-vs-claude-cli-kimi-api-cost',
+        title: 'Kimi-CLI 与 Claude-CLI 接入 Kimi api 的额度消耗对比',
+        excerpt: '对比 Kimi-CLI 与 Claude-CLI 在接入 Kimi API 时的额度消耗情况，分析两者的成本差异与使用建议。',
+        date: '2026-08-13',
+        tags: ['AI', 'Kimi', 'ClaudeCode', 'API'],
+        image: 'https://picsum.photos/seed/kimi-claude-cost/600/320.jpg',
+        content: 'blog/kimi-cli-vs-claude-cli-kimi-api-cost/content.md'
+    },
+    {
         id: 'qmt-live-assistant',
         title: '基于 QMT 的实盘工具',
         excerpt: '介绍如何使用 Python FastAPI + XtQuant SDK 构建量化交易实盘助手，支持多策略管理、远程信号下单、实时行情刷新和 Coinbase 风格的管理界面。',

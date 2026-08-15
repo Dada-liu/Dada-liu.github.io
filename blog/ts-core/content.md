@@ -13,3 +13,5 @@ TypeScript 是 JavaScript 的一个超集，它添加了静态类型检查。本
 
 6、声明文件
 
+只读属性（Readonly Properties）确保某些属性只能在创建时被赋值。
+TypeScript的类型系统可以帮助我们在编译时捕获错误。
