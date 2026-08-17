@@ -16,3 +16,5 @@ TypeScript 是 JavaScript 的一个超集，它添加了静态类型检查。本
 只读属性（Readonly Properties）确保某些属性只能在创建时被赋值。
 TypeScript的类型系统可以帮助我们在编译时捕获错误。
 枚举（Enums）为一组数值赋予更友好的名字。
+只读属性（Readonly Properties）确保某些属性只能在创建时被赋值。
+映射类型（Mapped Types）允许我们基于旧类型创建新类型。
