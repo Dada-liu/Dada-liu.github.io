@@ -377,8 +377,25 @@ function handleRoute() {
     if (hash) {
         const target = document.getElementById(hash);
         if (target && target.classList.contains('content-section')) {
+            isManualNavigating = true;
             target.scrollIntoView({ behavior: 'smooth' });
             setActiveNav(hash);
+
+            // 平滑滚动结束后再恢复滚动监听，避免中间过程高亮被覆盖
+            // 如果用户中途手动滚动页面，立即解除锁定，恢复滚动监听和点击响应
+            function clearManualNav() {
+                isManualNavigating = false;
+                window.removeEventListener('scrollend', clearManualNav);
+                window.removeEventListener('wheel', clearManualNav);
+                window.removeEventListener('touchmove', clearManualNav);
+                window.removeEventListener('keydown', clearManualNav);
+                clearTimeout(fallback);
+            }
+            const fallback = setTimeout(clearManualNav, 1000);
+            window.addEventListener('scrollend', clearManualNav, { once: true });
+            window.addEventListener('wheel', clearManualNav, { once: true });
+            window.addEventListener('touchmove', clearManualNav, { once: true });
+            window.addEventListener('keydown', clearManualNav, { once: true });
         }
     } else {
         window.scrollTo({ top: 0 });
@@ -400,6 +417,9 @@ function showBlogDetailView() {
     setActiveNav('blog');
 }
 
+// 标记是否正在执行手动导航（点击导航 / hash 跳转），避免与滚动监听冲突
+let isManualNavigating = false;
+
 // 更新导航高亮
 function setActiveNav(sectionId) {
     document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
@@ -413,8 +433,13 @@ function initScrollSpy() {
     let scheduled = false;
 
     function update() {
+        scheduled = false;
+
         // 博客详情视图下不跟随滚动
         if (document.getElementById('pageSections').classList.contains('hidden')) return;
+
+        // 手动导航期间不更新高亮，防止点击后的平滑滚动过程中高亮来回跳
+        if (isManualNavigating) return;
 
         const scrollY = window.scrollY + 160;
         let current = null;
@@ -427,7 +452,6 @@ function initScrollSpy() {
         });
 
         setActiveNav(current);
-        scheduled = false;
     }
 
     window.addEventListener('scroll', () => {
@@ -447,6 +471,16 @@ document.addEventListener('DOMContentLoaded', function() {
     loadBlogList();
     loadProjects();
     loadExperience();
+
+    // 主题切换（白天/夜间），手动选择存入 localStorage
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+            document.documentElement.dataset.theme = next;
+            localStorage.setItem('theme', next);
+        });
+    }
 
     // 侧边栏展开/收起
     const sidebarToggle = document.getElementById('sidebarToggle');
@@ -473,6 +507,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 b.classList.toggle('expanded', isExpanded);
             });
         }));
+
+        // 眨眼动画：展开状态下每 10s 随机眨 1~3 次，每次把 ✕ 短暂切换成 一（约 250ms）
+        function blinkOnce() {
+            if (!isExpanded) return;
+            toggles.forEach(b => { b.textContent = '一'; });
+            setTimeout(() => {
+                if (isExpanded) toggles.forEach(b => { b.textContent = '✕'; });
+            }, 250);
+        }
+
+        // 随机抽取眨眼次数（1、2 或 3 次），并按 500ms 节奏依次眨眼
+        function blinkRandom() {
+            const times = 1 + Math.floor(Math.random() * 3);
+            for (let i = 0; i < times; i++) {
+                setTimeout(blinkOnce, i * 500);
+            }
+        }
+
+        setInterval(blinkRandom, 10000);
     }
 
     // 关于我页面 Tab 切换
@@ -481,6 +534,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     aboutTabs.forEach(tab => {
         tab.addEventListener('click', () => {
+            // 点击当前已激活的 tab 时不做任何操作，避免高亮来回跳
+            if (tab.classList.contains('active')) return;
+
             const targetTab = tab.dataset.aboutTab;
             const targetContentId = targetTab === 'about-me' ? 'about-me' : `about-${targetTab}`;
 

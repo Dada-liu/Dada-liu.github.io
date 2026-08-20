@@ -22,6 +22,91 @@
     --glow: 0 0 24px rgba(34, 211, 238, 0.15);
 }
 
+/* ============================================
+   白天（亮色）主题：覆盖变量与硬编码深色
+   ============================================ */
+html[data-theme="light"] {
+    --bg: #f4f5fa;
+    --bg-2: #ffffff;
+    --surface: rgba(255, 255, 255, 0.65);
+    --surface-strong: rgba(255, 255, 255, 0.9);
+    --border: rgba(15, 15, 30, 0.10);
+    --border-strong: rgba(15, 15, 30, 0.18);
+    --text: #1c1c28;
+    --text-2: #4d4d5c;
+    --text-3: #8a8a99;
+    --accent: #0891b2;
+    --accent-2: #7c3aed;
+    --accent-soft: rgba(8, 145, 178, 0.10);
+    --shadow: 0 8px 32px rgba(15, 15, 30, 0.10);
+    --glow: 0 0 24px rgba(8, 145, 178, 0.18);
+}
+
+html[data-theme="light"] body::before {
+    background: radial-gradient(circle, rgba(8, 145, 178, 0.10), transparent 65%);
+}
+
+html[data-theme="light"] body::after {
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.08), transparent 65%);
+}
+
+html[data-theme="light"] ::-webkit-scrollbar-thumb {
+    background: rgba(15, 15, 30, 0.18);
+}
+
+html[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+    background: rgba(15, 15, 30, 0.3);
+}
+
+html[data-theme="light"] .wechat-popup {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+html[data-theme="light"] .wechat-popup::before {
+    border-top-color: rgba(255, 255, 255, 0.9);
+}
+
+html[data-theme="light"] .section-header h2 {
+    background: linear-gradient(135deg, #1c1c28 30%, var(--text-3));
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+html[data-theme="light"] .hero-btn-primary,
+html[data-theme="light"] .project-link {
+    color: #ffffff;
+}
+
+html[data-theme="light"] .blog-article-content code {
+    color: #be185d;
+}
+
+/* pre 内的 code 恢复继承，避免整块代码变粉 */
+html[data-theme="light"] .blog-article-content pre code {
+    color: inherit;
+}
+
+html[data-theme="light"] .blog-article-content pre {
+    background: #f0f0f6;
+    color: #1c1c28;
+}
+
+html[data-theme="light"] .code-block-toggle {
+    background: rgba(15, 15, 30, 0.06);
+}
+
+html[data-theme="light"] .code-block-toggle:hover {
+    background: rgba(15, 15, 30, 0.12);
+}
+
+html[data-theme="light"] .blog-article-content pre.code-block-collapsed::after {
+    background: linear-gradient(to bottom, transparent, #f0f0f6);
+}
+
+html[data-theme="light"] .mobile-nav {
+    background: rgba(255, 255, 255, 0.8);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -38,6 +123,7 @@ body {
     color: var(--text);
     background: var(--bg);
     min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* 背景渐变光晕装饰 */
@@ -229,6 +315,36 @@ body::after {
     font-size: 0.875rem;
     color: var(--text-3);
     margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+/* 主题切换按钮（太阳/月亮） */
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--text-3);
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+    color: var(--accent);
+    transform: scale(1.15);
+}
+
+/* 白天显示太阳，晚上显示月亮 */
+html[data-theme="light"] .theme-toggle .icon-moon,
+html:not([data-theme="light"]) .theme-toggle .icon-sun {
+    display: none;
 }
 
 .social-links {
@@ -394,7 +510,7 @@ body::after {
     margin-left: 280px;
     flex: 1;
     padding: 80px 80px 80px 32px;
-    overflow-y: auto;
+    /* 不要加 overflow-y: auto：高度无约束时它是空操作，还会把 sticky 目录的滚动祖先从视口抢走 */
     background: transparent;
 }
 
@@ -602,6 +718,7 @@ body.intro.intro-show-sidebar .sidebar-toggle {
     cursor: pointer;
     transition: all 0.2s ease;
     margin-bottom: -1px;
+    user-select: none;
 }
 
 .about-tab:hover {
@@ -643,13 +760,18 @@ body.intro.intro-show-sidebar .sidebar-toggle {
 
 .gallery-image {
     width: 100%;
-    height: 240px;
-    object-fit: cover;
+    /* height: 300px; */
+    object-fit: fill;
     border-radius: 12px;
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
+}
+
+.gallery-image__exercise {
+    width: 26%;
+    /* height: 300px; */
 }
 
 .gallery-image:hover {
@@ -1024,10 +1146,9 @@ body.intro.intro-show-sidebar .sidebar-toggle {
 .blog-article-sidebar {
     width: 168px;
     flex-shrink: 0;
-    position: fixed;
-    top: 300px;
-    right: 0;
-    max-height: calc(100vh - 40px);
+    position: sticky;
+    top: 40px;
+    max-height: calc(100vh - 80px);
     overflow-y: auto;
 }
 

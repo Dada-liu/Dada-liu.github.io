@@ -19,6 +19,15 @@ export const blogPosts = [
     //     content: 'blog/qmt-live-assistant-usage/content.md'
     // },
     {
+        id: 'ai-era-skills',
+        title: 'AI时代需要什么能力',
+        excerpt: '从 DeepSeek Harness 发布到我做 DS Work 桌面端的经历，引出对 AI 时代的思考：更广度的经验、更好的视觉审美、专攻某一个领域、just do it。',
+        date: '2026-08-19',
+        tags: ['AI', 'DeepSeek', 'DSH', '思考'],
+        image: 'https://picsum.photos/seed/ai-era-skills/600/320.jpg',
+        content: 'blog/ai-era-skills/content.md'
+    },
+    {
         id: 'kimi-cli-vs-claude-cli-kimi-api-cost',
         title: 'Kimi-CLI 与 Claude-CLI 接入 Kimi api 的额度消耗对比',
         excerpt: '对比 Kimi-CLI 与 Claude-CLI 在接入 Kimi API 时的额度消耗情况，分析两者的成本差异与使用建议。',

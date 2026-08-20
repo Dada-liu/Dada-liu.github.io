@@ -38,5 +38,14 @@ export const projects = [
         ],
         "demoUrl": "",
         "githubUrl": "https://github.com/Dada-liu/quant-fe-components"
+    },
+    {
+        id: 'deepseek-work',
+        title: 'DeepSeek Work',
+        description: '基于 Tauri v2 的 DeepSeek 桌面 Agent，作为 DSH 官方 Web UI 的桌面壳。安装包完全自包含 Node.js 运行时与 @deepseek-ai/dsh 依赖树，无需预装任何环境，支持 macOS / Windows，托盘驻留，通过 GitHub Releases 分发。',
+        image: './projects/assets/ds-work-preview.png',
+        tech: ['Tauri v2', 'Rust', 'React 18', 'TypeScript', 'Vite 7', '@deepseek-ai/dsh'],
+        demoUrl: 'https://www.hotpotliuyu.com/ds-work/',
+        githubUrl: 'https://github.com/Dada-liu/deepseek-work-preview'
     }
 ];

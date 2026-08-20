@@ -7,6 +7,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+    // 主题初始化（防闪烁，需在样式表渲染前执行）：手动选择优先，否则 8-18 点白天、其余时间夜间
+    (function () {
+        var t = localStorage.getItem('theme');
+        if (!t) {
+            var h = new Date().getHours();
+            t = (h >= 8 && h < 18) ? 'light' : 'dark';
+        }
+        document.documentElement.dataset.theme = t;
+    })();
+    </script>
     <link rel="stylesheet" href="styles.css">
     <script type="module" src="./js/script.js"></script>
 </head>
@@ -27,11 +38,11 @@
         <aside class="sidebar">
             <div class="profile-section">
                 <div class="avatar">
-                    <img src="./images/avatar.webp" alt="Profile Picture" class="profile-img">
+                    <img src="./images/avatar.jpg" alt="Profile Picture" class="profile-img">
                 </div>
                 <h1 class="name">Liu Yu</h1>
                 <p class="title">前端开发工程师</p>
-                <p class="location">📍 Beijing, China</p>
+                <p class="location"><button class="theme-toggle" id="themeToggle" title="切换主题" aria-label="切换主题"><svg class="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/></svg><svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>📍 Beijing, China</p>
             </div>
 
             <nav class="nav-section">
@@ -51,7 +62,11 @@
                 <p class="hero-greeting">你好，我是</p>
                 <h1 class="hero-name">Liu Yu</h1>
                 <p class="hero-tagline">前端开发工程师 · Vibe Coding 爱好者</p>
-                <p class="hero-desc">热衷于将复杂的问题转化为简单、优雅的解决方案。专注于前端工程、AI 辅助开发与量化交易工具。</p>
+                <p class="hero-desc">
+                    热衷于将复杂的问题转化为简单、优雅的解决方案。
+                    </br>
+                    专注于前端工程、AI 辅助开发与量化交易工具。
+                </p>
             </section>
 
             <section id="about" class="content-section">
@@ -61,7 +76,7 @@
                 <div class="about-tabs">
                     <button class="about-tab active" data-about-tab="about-me">关于我</button>
                     <button class="about-tab" data-about-tab="experience">工作经历</button>
-                    <button class="about-tab" data-about-tab="hobbies">爱好</button>
+                    <button class="about-tab" data-about-tab="hobbies">运动</button>
                     <button class="about-tab" data-about-tab="investment">投资</button>
                 </div>
                 <div class="about-tab-content active" id="about-me">
@@ -81,13 +96,12 @@
                         <p>追求极限，探索更高阶的运动；</p>
                     </div>
                     <div class="image-gallery">
-                        <img src="./images/hobby-1.webp" alt="爱好 1" class="gallery-image">
-                        <img src="./images/hobby-2.webp" alt="爱好 2" class="gallery-image">
-                        <img src="./images/hobby-3.webp" alt="爱好 3" class="gallery-image">
+                        <img src="./images/hobby-1.webp" alt="运动" class="gallery-image gallery-image__exercise">
                     </div>
                 </div>
                 <div class="about-tab-content" id="about-investment">
                     <div class="about-content">
+                        <p>多因子量化、可转债</p>
                         <p>
                             欢迎加好友一起探讨
                         </p>
@@ -161,7 +175,8 @@
                     <p>让我们一起合作</p>
                 </div>
                 <div class="contact-content">
-                    <p>我始终对新项目和机会感兴趣。无论您有疑问还是只是想打个招呼，请随时联系我！</p>
+                    <p>我始终对新项目和机会感兴趣。</p>
+                    <p>无论您有疑问还是只是想打个招呼，请随时联系我！</p>
                     <div class="social-links contact-social">
                         <a href="mailto:hotpotliu@163.com" class="social-link" target="_blank" title="邮箱">✉️</a>
                         <a href="https://github.com/Dada-liu" class="social-link" target="_blank" title="GitHub"><img src="./github-logo.png" alt="GitHub" class="social-icon"></a>
@@ -189,7 +204,7 @@
             </section>
 
             <footer class="site-footer">
-                <p>© 2026 Liu Yu · 用 ☕ 和 Claude Code 构建</p>
+                <p>© 2026 Liu Yu · 用 ☕ 和 Agent 构建</p>
             </footer>
             </div>
 
@@ -203,10 +218,10 @@
         </main>
     </div>
     <script>
-    // 首次进入动画：只展示 hero → 1s 后显示并滚动居中到「联系我」→ 3s 后左边栏渐显 → 4s 后展示全部并滚动到「关于我」
+    // 首次进入动画：只展示 hero → 2s 后显示并滚动居中到「联系我」→ 3s 后左边栏渐显 → 4s 后展示全部并滚动到「关于我」
     (function () {
-        // 带 hash 的直达链接（如 #blog/xxx）、或后台打开的标签页，跳过动画
-        if (window.location.hash || document.hidden) {
+        // 开场动画已取消
+        if (true || window.location.hash || document.hidden) {
             document.body.classList.remove('intro');
             return;
         }
@@ -233,11 +248,11 @@
                 var top = contact.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.2;
                 window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
             }
-        }, 1000);
+        }, 2000);
         // 3s 后左边栏 1s 渐显
         setTimeout(function () {
             document.body.classList.add('intro-show-sidebar');
-        }, 2000);
+        }, 3000);
         // 再 1s 后显示所有区块，保持「联系我」位置不动，然后 1s 滚动到「关于我」（距顶部 10%）
         setTimeout(function () {
             var contact = document.getElementById('contact');
@@ -246,17 +261,54 @@
 
             document.body.classList.remove('intro', 'intro-show-contact', 'intro-show-sidebar');
 
-            // 区块全部显示会把「联系我」向下推，补偿滚动使其在视口中保持不动
-            if (contact) {
-                var delta = contact.getBoundingClientRect().top - contactTop;
-                window.scrollTo({ top: window.scrollY + delta, behavior: 'instant' });
+            // 等待中间区块（技能 / 项目 / 博客）显示并且动态内容加载完成，再执行向上滚动
+            function waitForMiddleSections(callback) {
+                var start = performance.now();
+                var maxWait = 3000; // 最多等待 3s
+
+                function check() {
+                    var skills = document.getElementById('skills');
+                    var projects = document.getElementById('projects');
+                    var blog = document.getElementById('blog');
+                    var projectsGrid = document.getElementById('projectsGrid');
+                    var blogList = document.getElementById('blogList');
+                    var experienceTimeline = document.getElementById('experienceTimeline');
+
+                    var isDisplayed = skills && getComputedStyle(skills).display !== 'none' &&
+                                      projects && getComputedStyle(projects).display !== 'none' &&
+                                      blog && getComputedStyle(blog).display !== 'none';
+                    var isLoaded = (!projectsGrid || projectsGrid.children.length > 0) &&
+                                   (!blogList || blogList.children.length > 0) &&
+                                   (!experienceTimeline || experienceTimeline.children.length > 0);
+
+                    if (isDisplayed && isLoaded) {
+                        callback();
+                        return;
+                    }
+
+                    if (performance.now() - start > maxWait) {
+                        callback(); // 超时兜底，避免无限等待
+                        return;
+                    }
+
+                    requestAnimationFrame(check);
+                }
+                check();
             }
 
-            if (about) {
-                var target = about.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.1;
-                smoothScrollTo(Math.max(target, 0), 1000);
-            }
-        }, 3000);
+            waitForMiddleSections(function () {
+                // 区块全部显示会把「联系我」向下推，补偿滚动使其在视口中保持不动
+                if (contact) {
+                    var delta = contact.getBoundingClientRect().top - contactTop;
+                    window.scrollTo({ top: window.scrollY + delta, behavior: 'instant' });
+                }
+
+                if (about) {
+                    var target = about.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.1;
+                    smoothScrollTo(Math.max(target, 0), 1000);
+                }
+            });
+        }, 4000);
     })();
     </script>
 </body>
