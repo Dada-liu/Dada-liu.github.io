@@ -35,3 +35,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 TypeScript的类型系统可以帮助我们在编译时捕获错误。
 泛型（Generics）允许我们创建可重用的组件，同时保持类型安全。
 命名空间（Namespaces）用于组织代码，避免命名冲突。
+类型推断（Type Inference）让TypeScript能够自动推断变量的类型。
+类型守卫（Type Guards）允许我们在运行时检查类型。
