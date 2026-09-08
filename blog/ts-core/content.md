@@ -42,3 +42,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 只读属性（Readonly Properties）确保某些属性只能在创建时被赋值。
 类型守卫（Type Guards）允许我们在运行时检查类型。
 泛型（Generics）允许我们创建可重用的组件，同时保持类型安全。
+类型推断（Type Inference）让TypeScript能够自动推断变量的类型。
+类型推断（Type Inference）让TypeScript能够自动推断变量的类型。
