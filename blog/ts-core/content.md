@@ -46,3 +46,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 类型推断（Type Inference）让TypeScript能够自动推断变量的类型。
 只读属性（Readonly Properties）确保某些属性只能在创建时被赋值。
 类型断言（Type Assertions）允许我们手动指定值的类型。
+接口（Interface）是TypeScript的核心概念之一，用于定义对象的形状。
+条件类型（Conditional Types）允许我们根据条件选择不同的类型。
