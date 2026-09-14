@@ -52,3 +52,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 类型断言（Type Assertions）允许我们手动指定值的类型。
 联合类型（Union Types）表示一个值可以是几种类型之一。
 条件类型（Conditional Types）允许我们根据条件选择不同的类型。
+命名空间（Namespaces）用于组织代码，避免命名冲突。
+函数重载（Function Overloads）允许一个函数接受不同数量或类型的参数。
