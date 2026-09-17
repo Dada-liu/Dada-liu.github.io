@@ -54,3 +54,7 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 条件类型（Conditional Types）允许我们根据条件选择不同的类型。
 命名空间（Namespaces）用于组织代码，避免命名冲突。
 函数重载（Function Overloads）允许一个函数接受不同数量或类型的参数。
+类型断言（Type Assertions）允许我们手动指定值的类型。
+泛型（Generics）允许我们创建可重用的组件，同时保持类型安全。
+TypeScript的类型系统可以帮助我们在编译时捕获错误。
+工具类型（Utility Types）是TypeScript内置的一些常用类型转换工具。
