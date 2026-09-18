@@ -58,3 +58,4 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 泛型（Generics）允许我们创建可重用的组件，同时保持类型安全。
 TypeScript的类型系统可以帮助我们在编译时捕获错误。
 工具类型（Utility Types）是TypeScript内置的一些常用类型转换工具。
+交叉类型（Intersection Types）可以将多个类型合并为一个类型。
