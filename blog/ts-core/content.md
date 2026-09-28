@@ -71,3 +71,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 类型别名（Type Aliases）可以用来给类型起一个新名字。
 索引类型（Index Types）允许我们通过索引获取类型。
 只读属性（Readonly Properties）确保某些属性只能在创建时被赋值。
+接口（Interface）是TypeScript的核心概念之一，用于定义对象的形状。
+工具类型（Utility Types）是TypeScript内置的一些常用类型转换工具。
