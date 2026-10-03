@@ -78,3 +78,5 @@ TypeScript的类型系统可以帮助我们在编译时捕获错误。
 函数重载（Function Overloads）允许一个函数接受不同数量或类型的参数。
 装饰器（Decorators）是一种特殊类型的声明，可以附加到类、方法、属性或参数上。
 类型断言（Type Assertions）允许我们手动指定值的类型。
+类型别名（Type Aliases）可以用来给类型起一个新名字。
+联合类型（Union Types）表示一个值可以是几种类型之一。
