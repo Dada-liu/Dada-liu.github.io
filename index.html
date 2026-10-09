@@ -6,7 +6,9 @@
     <title>Liu Yu</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- 字体样式表非阻塞加载：首屏先用系统字体渲染，字体到达后再替换，避免外部字体阻塞首屏 -->
+    <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap"></noscript>
     <script>
     // 主题初始化（防闪烁，需在样式表渲染前执行）：手动选择优先，否则 8-18 点白天、其余时间夜间
     (function () {
@@ -21,7 +23,7 @@
     <link rel="stylesheet" href="styles.css">
     <script type="module" src="./js/script.js"></script>
 </head>
-<body class="intro">
+<body>
     <div class="app-container">
         <!-- 移动端顶部导航 -->
         <nav class="mobile-nav">
@@ -38,7 +40,7 @@
         <aside class="sidebar collapsed">
             <div class="profile-section">
                 <div class="avatar">
-                    <img src="./images/avatar.jpg" alt="Profile Picture" class="profile-img">
+                    <img src="./images/avatar.webp" alt="Profile Picture" class="profile-img">
                 </div>
                 <h1 class="name">Liu Yu</h1>
                 <p class="title">前端开发工程师</p>
@@ -97,7 +99,7 @@
                         <p>追求极限，探索更高阶的运动；</p>
                     </div>
                     <div class="image-gallery">
-                        <img src="./images/hobby-1.webp" alt="运动" class="gallery-image gallery-image__exercise">
+                        <img src="./images/hobby-1.webp" alt="运动" class="gallery-image gallery-image__exercise" loading="lazy" decoding="async">
                     </div>
                 </div>
                 <div class="about-tab-content" id="about-investment">
@@ -108,7 +110,7 @@
                         </p>
                     </div>
                     <div class="image-gallery">
-                        <img src="./images/invest.webp" alt="投资" class="gallery-image">
+                        <img src="./images/invest.webp" alt="投资" class="gallery-image" loading="lazy" decoding="async">
                     </div>
                 </div>
             </section>
@@ -182,12 +184,12 @@
                     <p>无论您有疑问还是只是想打个招呼，请随时联系我！</p>
                     <div class="social-links contact-social">
                         <a href="mailto:hotpotliu@163.com" class="social-link" target="_blank" title="邮箱">✉️</a>
-                        <a href="https://github.com/Dada-liu" class="social-link" target="_blank" title="GitHub"><img src="./github-logo.png" alt="GitHub" class="social-icon"></a>
+                        <a href="https://github.com/Dada-liu" class="social-link" target="_blank" title="GitHub"><img src="./github-logo.webp" alt="GitHub" class="social-icon" loading="lazy" decoding="async"></a>
                         <div class="wechat-container">
-                            <a href="#" class="social-link wechat-link" target="_blank" title="微信"><img src="./wechat-logo.svg" alt="WeChat" class="social-icon"></a>
+                            <a href="#" class="social-link wechat-link" target="_blank" title="微信"><img src="./wechat-logo.svg" alt="WeChat" class="social-icon" loading="lazy" decoding="async"></a>
                             <div class="wechat-popup">
                                 <div class="wechat-popup-content">
-                                    <img src="./wechat-qrcode.webp" alt="WeChat QR Code" class="wechat-qrcode">
+                                    <img src="./wechat-qrcode.webp" alt="WeChat QR Code" class="wechat-qrcode" loading="lazy" decoding="async">
                                     <div class="wechat-info">
                                         <p class="wechat-id">微信号：hotpotdaxia</p>
                                         <p class="wechat-tip">扫码添加微信</p>
@@ -196,10 +198,10 @@
                             </div>
                         </div>
                         <a href="https://juejin.cn/user/4187412310262702" class="social-link" target="_blank" title="掘金">
-                            <img src="./juejin-logo.svg" alt="掘金" class="social-icon"></a>
+                            <img src="./juejin-logo.svg" alt="掘金" class="social-icon" loading="lazy" decoding="async"></a>
                         </a>
                         <a href="https://blog.csdn.net/txt666999999" class="social-link" target="_blank" title="CSDN">
-                            <img src="https://g.csdnimg.cn/static/logo/favicon32.ico" alt="CSDN" class="social-icon"></a>
+                            <img src="https://g.csdnimg.cn/static/logo/favicon32.ico" alt="CSDN" class="social-icon" loading="lazy" decoding="async"></a>
                             <!-- <img src="./csdn-logo.png" alt="CSDN" class="social-icon"></a> -->
                         </a>
                     </div>
@@ -220,99 +222,5 @@
             </section>
         </main>
     </div>
-    <script>
-    // 首次进入动画：只展示 hero → 2s 后显示并滚动居中到「联系我」→ 3s 后左边栏渐显 → 4s 后展示全部并滚动到「关于我」
-    (function () {
-        // 开场动画已取消
-        if (true || window.location.hash || document.hidden) {
-            document.body.classList.remove('intro');
-            return;
-        }
-
-        // 手动实现定时长度的平滑滚动（CSS smooth 无法控制时长）
-        function smoothScrollTo(target, duration) {
-            var start = window.scrollY;
-            var change = target - start;
-            var startTime = null;
-            function step(ts) {
-                if (!startTime) startTime = ts;
-                var p = Math.min((ts - startTime) / duration, 1);
-                var ease = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
-                window.scrollTo({ top: start + change * ease, behavior: 'instant' });
-                if (p < 1) requestAnimationFrame(step);
-            }
-            requestAnimationFrame(step);
-        }
-
-        setTimeout(function () {
-            document.body.classList.add('intro-show-contact');
-            var contact = document.getElementById('contact');
-            if (contact) {
-                var top = contact.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.2;
-                window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-            }
-        }, 2000);
-        // 3s 后左边栏 1s 渐显
-        setTimeout(function () {
-            document.body.classList.add('intro-show-sidebar');
-        }, 3000);
-        // 再 1s 后显示所有区块，保持「联系我」位置不动，然后 1s 滚动到「关于我」（距顶部 10%）
-        setTimeout(function () {
-            var contact = document.getElementById('contact');
-            var about = document.getElementById('about');
-            var contactTop = contact ? contact.getBoundingClientRect().top : 0;
-
-            document.body.classList.remove('intro', 'intro-show-contact', 'intro-show-sidebar');
-
-            // 等待中间区块（技能 / 项目 / 博客）显示并且动态内容加载完成，再执行向上滚动
-            function waitForMiddleSections(callback) {
-                var start = performance.now();
-                var maxWait = 3000; // 最多等待 3s
-
-                function check() {
-                    var skills = document.getElementById('skills');
-                    var projects = document.getElementById('projects');
-                    var blog = document.getElementById('blog');
-                    var projectsGrid = document.getElementById('projectsGrid');
-                    var blogList = document.getElementById('blogList');
-                    var experienceTimeline = document.getElementById('experienceTimeline');
-
-                    var isDisplayed = skills && getComputedStyle(skills).display !== 'none' &&
-                                      projects && getComputedStyle(projects).display !== 'none' &&
-                                      blog && getComputedStyle(blog).display !== 'none';
-                    var isLoaded = (!projectsGrid || projectsGrid.children.length > 0) &&
-                                   (!blogList || blogList.children.length > 0) &&
-                                   (!experienceTimeline || experienceTimeline.children.length > 0);
-
-                    if (isDisplayed && isLoaded) {
-                        callback();
-                        return;
-                    }
-
-                    if (performance.now() - start > maxWait) {
-                        callback(); // 超时兜底，避免无限等待
-                        return;
-                    }
-
-                    requestAnimationFrame(check);
-                }
-                check();
-            }
-
-            waitForMiddleSections(function () {
-                // 区块全部显示会把「联系我」向下推，补偿滚动使其在视口中保持不动
-                if (contact) {
-                    var delta = contact.getBoundingClientRect().top - contactTop;
-                    window.scrollTo({ top: window.scrollY + delta, behavior: 'instant' });
-                }
-
-                if (about) {
-                    var target = about.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.1;
-                    smoothScrollTo(Math.max(target, 0), 1000);
-                }
-            });
-        }, 4000);
-    })();
-    </script>
 </body>
 </html>

@@ -118,7 +118,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: var(--text);
     background: var(--bg);
@@ -628,40 +628,6 @@ html:not([data-theme="light"]) .theme-toggle .icon-sun {
     text-align: center;
     color: var(--text-3);
     font-size: 0.875rem;
-}
-
-/* 首次进入动画：初始只展示 hero 区块 */
-body.intro .content-section,
-body.intro .site-footer,
-body.intro .mobile-nav {
-    display: none;
-}
-
-body.intro .sidebar,
-body.intro .sidebar-toggle {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 1s ease;
-}
-
-body.intro .hero {
-    min-height: 100vh;
-}
-
-body.intro.intro-show-contact #contact {
-    display: block;
-}
-
-/* 第二阶段需要足够的滚动空间，才能把「联系我」顶到距顶部 20% */
-body.intro.intro-show-contact .page-sections {
-    padding-bottom: 80vh;
-}
-
-/* 进场动画第二阶段：左边栏 1s 渐显 */
-body.intro.intro-show-sidebar .sidebar,
-body.intro.intro-show-sidebar .sidebar-toggle {
-    opacity: 1;
-    visibility: visible;
 }
 
 @keyframes fade-up {

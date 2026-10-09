@@ -53,8 +53,9 @@ export const projects = [
 ```
 
 **Markdown 解析**：
-- `parseMarkdown(markdown)` - 解析 Markdown 为 HTML
+- `parseMarkdown(markdown)` - 解析 Markdown 为 HTML（async，首次调用时动态加载 micromark）
 - `fixImagePaths(html, articleId)` - 修复图片路径，添加文章文件夹前缀
+- micromark 及其 GFM 扩展体积大且首屏用不到，改为打开博客详情时才 `import()`，不进入首屏请求
 
 图片路径转换：
 - 绝对路径（如 `https://...`）保持不变
@@ -93,6 +94,15 @@ export const projects = [
 2. 在 `blog/` 目录下创建文章文件夹 `{article-id}/`
 3. 在文件夹中创建 `content.md` 文件
 4. 如有图片，放在文章文件夹的 `assets/` 目录
+
+## 性能约定
+
+首屏只加载「文字 + 样式 + 交互脚本」，其余一律延后：
+
+- **外部字体非阻塞**：`fonts.googleapis.com` 的样式表用 `media="print"` + `onload` 异步加载，首屏先用系统字体渲染；`styles.css` 的 `font-family` 保留了中文系统字体回退（PingFang SC / 微软雅黑），外网字体不可用时自动降级。
+- **图片按需加载**：首屏之外、以及默认不可见（收起状态的侧边栏、未激活的 Tab、hover 弹层）的图片都加 `loading="lazy" decoding="async"`；首屏内的图片保持 eager，避免懒加载把首屏图片也推迟。
+- **图片尺寸按实际显示尺寸的 2 倍生成 WebP**，不要直接塞原图（头像显示 110px，原图却有 1512×2016）。
+- **Markdown 解析按需加载**：见上文 `parseMarkdown`，打开博客详情时才拉 micromark。
 
 ## 文件结构
 

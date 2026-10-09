@@ -1,8 +1,6 @@
 import { blogPosts } from './blog-posts.js';
 import { projects } from '../projects/projects.js';
 import { experiences } from './experience.js';
-import { micromark } from 'https://esm.sh/micromark@4.0.2';
-import { gfm, gfmHtml } from 'https://esm.sh/micromark-extension-gfm@3.0.0';
 
 // 加载经历时间线
 function loadExperience() {
@@ -29,7 +27,7 @@ function loadProjects() {
     projectsGrid.innerHTML = projects.map(project => `
         <div class="project-card">
             <div class="project-image">
-                <img src="${project.image}" alt="${project.title}">
+                <img src="${project.image}" alt="${project.title}" loading="lazy" decoding="async">
             </div>
             <div class="project-info">
                 <h3>${project.title}</h3>
@@ -101,7 +99,7 @@ async function showBlogDetail(postId) {
 
         if (response.ok) {
             const markdown = await response.text();
-            content = parseMarkdown(markdown);
+            content = await parseMarkdown(markdown);
             content = fixImagePaths(content, post.id);
         } else {
             // 如果无法加载，使用默认内容
@@ -143,8 +141,24 @@ async function showBlogDetail(postId) {
     }
 }
 
+// micromark 及其依赖体积大，且首屏和博客列表都用不到，改为打开文章时按需加载
+let markdownLib = null;
+
+async function getMarkdownLib() {
+    if (!markdownLib) {
+        const [{ micromark }, { gfm, gfmHtml }] = await Promise.all([
+            import('https://esm.sh/micromark@4.0.2'),
+            import('https://esm.sh/micromark-extension-gfm@3.0.0')
+        ]);
+        markdownLib = { micromark, gfm, gfmHtml };
+    }
+    return markdownLib;
+}
+
 // 使用 micromark 解析 Markdown
-function parseMarkdown(markdown) {
+async function parseMarkdown(markdown) {
+    const { micromark, gfm, gfmHtml } = await getMarkdownLib();
+
     // 1. 解析为 HTML（GFM + 原始 HTML 支持）
     let html = micromark(markdown, {
         allowDangerousHtml: true,

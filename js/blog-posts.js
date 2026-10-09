@@ -19,6 +19,15 @@ export const blogPosts = [
     //     content: 'blog/qmt-live-assistant-usage/content.md'
     // },
     {
+        id: 'deepseek-harness-pi-agents-md',
+        title: 'Deepseek Harness 和 Pi 的 AGENTS.md',
+        excerpt: '从 dsh 和 Pi 的 AGENTS.md 出发，对比两个前沿 Agent 项目如何用自然语言约束 LLM：项目理念、文档体量、生态规模与开源阶段带来的差异。',
+        date: '2026-10-09',
+        tags: ['AI', 'Agent', 'AGENTS.md', '开源'],
+        image: 'blog/deepseek-harness-pi-agents-md/assets/cover.webp',
+        content: 'blog/deepseek-harness-pi-agents-md/content.md'
+    },
+    {
         id: 'ai-era-skills',
         title: 'AI时代需要什么能力',
         excerpt: '从 DeepSeek Harness 发布到我做 DS Work 桌面端的经历，引出对 AI 时代的思考：更广度的经验、更好的视觉审美、专攻某一个领域、just do it。',
