@@ -4,7 +4,7 @@
 
 为了清晰的看到翻译任务的具体花费，我用了 Deepseek Harness 搭配 deepseek-v4-flash，一个兼具性能和花费的组合，大概是每千英文单词 ¥0.19；
 
-![](./assets/image1.png)
+![](./assets/image1.webp)
 
 这是一个远低于使用 kimi k3 的花费，于是我就有了问题：为什么要我来判断应该使用 deepseek flash 这种更便宜的模型去执行翻译任务？能不能让 agent 自己判断任务难度然后再使用不同档位的模型？
 
@@ -56,7 +56,7 @@ plan 模式的作用是：用户觉得某个任务需要计划一下再执行，
 
 main agent 按照任务难度决定直接回答、派发给 work agent 或者制定计划之后派发给 work agent，并且派发给 work agent 时还根据任务的不同难度分配不同档位的模型；work agent 按照任务是否能并行执行决定是否将任务派发给多个并行执行的 task agent 执行；
 
-![hotpot agent web端](./assets/image2.png)
+![hotpot agent web端](./assets/image2.webp)
 
 项目已经开源，可以直接访问：
 
