@@ -1,5 +1,14 @@
 // 博客文章配置
 export const blogPosts = [
+    {
+        id: 'where-is-the-upper-limit-of-agent',
+        title: 'Agent 的上限在哪里',
+        excerpt: '从翻译任务的模型选择讲起：为什么用哪个模型、要不要进 plan 模式这些判断不该消耗人脑，以及 hotpot agent 如何用 main / work / task 三层结构减少人类的意图与判断消耗。',
+        date: '2026-10-25',
+        tags: ['AI', 'Agent', 'LLM', '思考'],
+        image: 'blog/where-is-the-upper-limit-of-agent/assets/cover.webp',
+        content: 'blog/where-is-the-upper-limit-of-agent/content.md'
+    },
     // {
     //     id: 'jq-send-signal-to-qmt',
     //     title: '在聚宽发送信号给 QMT-Live-Assistant',
