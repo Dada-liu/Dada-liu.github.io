@@ -1,6 +1,34 @@
 // 项目数据配置
 export const projects = [
     {
+        "id": "hotpot-agent",
+        "title": "HotPot Agent",
+        "description": "基于 Node + TypeScript 的 code agent，pnpm monorepo 实现 main / worker / task 三层编排与分层模型路由，支持 plan 审批、三档权限与 steer/queue 双队列，会话以 JSONL 日志为唯一事实源，提供 CLI 和 React Web 端。",
+        "image": "./projects/assets/hotpot-agent-preview.webp",
+        "tech": [
+        "Node.js",
+        "TypeScript",
+        "pnpm Monorepo",
+        "React 18",
+        "Vite 6",
+        "Tailwind CSS 4",
+        "Hono",
+        "REST + SSE",
+        "Vitest"
+        ],
+        "demoUrl": "https://dada-liu.github.io/hotpot-agent/",
+        "githubUrl": "https://github.com/Dada-liu/hotpot-agent"
+    },
+    {
+        id: 'deepseek-work',
+        title: 'DeepSeek Work',
+        description: '基于 Tauri v2 的 DeepSeek 桌面 Agent，作为 DSH 官方 Web UI 的桌面壳。安装包完全自包含 Node.js 运行时与 @deepseek-ai/dsh 依赖树，无需预装任何环境，支持 macOS / Windows，托盘驻留，通过 GitHub Releases 分发。',
+        image: './projects/assets/ds-work-preview.webp',
+        tech: ['Tauri v2', 'Rust', 'React 18', 'TypeScript', 'Vite 7', '@deepseek-ai/dsh'],
+        demoUrl: 'https://www.hotpotliuyu.com/ds-work/',
+        githubUrl: 'https://github.com/Dada-liu/deepseek-work-preview'
+    },
+    {
         id: 'qmt-live-assistant',
         title: 'QMT Live Assistant',
         description: '基于 Python FastAPI + 原生 HTML 前端的 miniQMT 量化交易助手，支持多策略管理、远程信号接收、实时行情刷新、Token 认证、亮暗主题切换，设计风格参考 Coinbase。',
@@ -18,34 +46,5 @@ export const projects = [
   'react-hook-form', 'Zod'], 
       demoUrl: 'https://dada-liu.github.io/resume-generator/',
       githubUrl: 'https://github.com/dada-liu/resume-generator-2'
-    },
-    {
-        "id": "quant-fe-components",
-        "title": "量化前端组件库",
-        "description": "面向量化交易场景的 React 组件库，提供金融数据可视化、交易操作、风控管理等 27 个核心组件，包含K线图、成交量图、订单面板、持仓管理、风控看板等，支持主题切换和按需加载",
-        "image": "https://picsum.photos/seed/project3/400/200.jpg",
-        "tech": [
-        "React 18",
-        "TypeScript",
-        "Vite 8",
-        "ECharts 5",
-        "pnpm workspaces",
-        "Storybook 8",
-        "SCSS",
-        "Vitest",
-        "ESLint",
-        "GitHub Actions"
-        ],
-        "demoUrl": "",
-        "githubUrl": "https://github.com/Dada-liu/quant-fe-components"
-    },
-    {
-        id: 'deepseek-work',
-        title: 'DeepSeek Work',
-        description: '基于 Tauri v2 的 DeepSeek 桌面 Agent，作为 DSH 官方 Web UI 的桌面壳。安装包完全自包含 Node.js 运行时与 @deepseek-ai/dsh 依赖树，无需预装任何环境，支持 macOS / Windows，托盘驻留，通过 GitHub Releases 分发。',
-        image: './projects/assets/ds-work-preview.webp',
-        tech: ['Tauri v2', 'Rust', 'React 18', 'TypeScript', 'Vite 7', '@deepseek-ai/dsh'],
-        demoUrl: 'https://www.hotpotliuyu.com/ds-work/',
-        githubUrl: 'https://github.com/Dada-liu/deepseek-work-preview'
     }
 ];
