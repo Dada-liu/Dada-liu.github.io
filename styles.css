@@ -388,6 +388,12 @@ html:not([data-theme="light"]) .theme-toggle .icon-sun {
     margin-top: 32px;
 }
 
+/* Hero 首屏的社交图标：左对齐 */
+.hero-social {
+    justify-content: flex-start;
+    margin-top: 8px;
+}
+
 /* 微信弹窗样式 */
 .wechat-container {
     position: relative;

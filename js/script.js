@@ -504,12 +504,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (sidebarToggle && sidebar) {
         const toggles = [sidebarToggle, document.getElementById('sidebarToggleRight')].filter(Boolean);
 
-        // 默认收起状态
-        let isExpanded = false;
+        // 默认展开状态
+        let isExpanded = true;
         toggles.forEach(btn => {
-            btn.textContent = '☰';
-            btn.title = '展开侧边栏';
-            btn.classList.remove('expanded');
+            btn.textContent = '✕';
+            btn.title = '收起侧边栏';
+            btn.classList.add('expanded');
         });
 
         toggles.forEach(btn => btn.addEventListener('click', () => {
